@@ -1,4 +1,4 @@
-# Test Results - 2024-08-16 19:10:19
+# Test Results - 2024-08-16 19:26:58
 ## Test case #1
 
 ### Status
@@ -37,30 +37,12 @@
 ...#......
 
 ### Output
-55
-before the loop
-after the loop
----> ..#..
-55
-before the loop
-after the loop
----> #####
-56
-before the loop
-after the loop
----> ###...
-11
-before the loop
-after the loop
----> #
-56
-before the loop
-after the loop
----> .#####
-210
-before the loop
-after the loop
----> ...#......
+2 2
+2 2
+3 1
+0 0
+2 3
+1 3
 
 ### Expected Output
 3 3
@@ -71,39 +53,21 @@ after the loop
 2 4
 
 ### Difference
---- /dev/fd/63	2024-08-16 19:10:19.940231374 +0530
-+++ /dev/fd/62	2024-08-16 19:10:19.945231805 +0530
-@@ -1,6 +1,24 @@
+--- /dev/fd/63	2024-08-16 19:26:58.587562331 +0530
++++ /dev/fd/62	2024-08-16 19:26:58.589562438 +0530
+@@ -1,6 +1,6 @@
 -3 3
 -3 3
 -4 2
 -1 1
 -3 4
 -2 4
-+55
-+before the loop
-+after the loop
-+---> ..#..
-+55
-+before the loop
-+after the loop
-+---> #####
-+56
-+before the loop
-+after the loop
-+---> ###...
-+11
-+before the loop
-+after the loop
-+---> #
-+56
-+before the loop
-+after the loop
-+---> .#####
-+210
-+before the loop
-+after the loop
-+---> ...#......
++2 2
++2 2
++3 1
++0 0
++2 3
++1 3
 
 ## Test case #2
 
@@ -144,30 +108,12 @@ after the loop
 
 
 ### Output
-55
-before the loop
-after the loop
----> ..#..
-55
-before the loop
-after the loop
----> #####
-56
-before the loop
-after the loop
----> ###...
-11
-before the loop
-after the loop
----> #
-56
-before the loop
-after the loop
----> .#####
-210
-before the loop
-after the loop
----> ...#......
+2 2
+2 2
+3 1
+0 0
+2 3
+1 3
 
 ### Expected Output
 3 3
@@ -178,37 +124,19 @@ after the loop
 2 4
 
 ### Difference
---- /dev/fd/63	2024-08-16 19:10:20.005236981 +0530
-+++ /dev/fd/62	2024-08-16 19:10:20.006237068 +0530
-@@ -1,6 +1,24 @@
+--- /dev/fd/63	2024-08-16 19:26:58.616563883 +0530
++++ /dev/fd/62	2024-08-16 19:26:58.616563883 +0530
+@@ -1,6 +1,6 @@
 -3 3
 -3 3
 -4 2
 -1 1
 -3 4
 -2 4
-+55
-+before the loop
-+after the loop
-+---> ..#..
-+55
-+before the loop
-+after the loop
-+---> #####
-+56
-+before the loop
-+after the loop
-+---> ###...
-+11
-+before the loop
-+after the loop
-+---> #
-+56
-+before the loop
-+after the loop
-+---> .#####
-+210
-+before the loop
-+after the loop
-+---> ...#......
++2 2
++2 2
++3 1
++0 0
++2 3
++1 3
 

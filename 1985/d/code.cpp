@@ -10,7 +10,7 @@ typedef long long ll;
 
 void solve() {
     int n, m;
-    cin >> n >> m;
+    std::cin >> n >> m;
     std::string a[n];
 
     int _i = -1;
@@ -18,7 +18,7 @@ void solve() {
 
     for (int i = 0; i < n; i++) {
         std::string line;
-        cin >> line;
+        std::cin >> line;
         a[i] = line;
         int hash_count = std::count(line.begin(), line.end(), '#');
         if (hash_count > max_i) {
@@ -26,8 +26,21 @@ void solve() {
             _i = i;
         }
     }
+    // Now we will find the _j
 
-    std::cout << "---> " << a[_i] << std::endl;
+    std::string line = a[_i];
+
+    int start = 0;
+    int end = line.size() - 1;
+
+    while (start < end) {
+        if (line[start] == '#' && line[end] == '#') break;
+
+        if (line[start] != '#') start++;
+        if (line[end] != '#') end--;
+    }
+
+    std::cout << _i << " " << ((end + start) / 2) << "\n";
 }
 
 int main() {
