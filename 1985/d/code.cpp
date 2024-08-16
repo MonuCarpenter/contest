@@ -33,14 +33,14 @@ void solve() {
     int start = 0;
     int end = line.size() - 1;
 
-    while (start < end) {
+    while (start <= end) {
         if (line[start] == '#' && line[end] == '#') break;
 
         if (line[start] != '#') start++;
         if (line[end] != '#') end--;
     }
 
-    std::cout << _i << " " << ((end + start) / 2) << "\n";
+    std::cout << _i + 1 << " " << ((end + start) / 2) + 1 << "\n";
 }
 
 int main() {
