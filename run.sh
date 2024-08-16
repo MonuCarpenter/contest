@@ -198,3 +198,20 @@ display_loader $test_pid
 wait $test_pid
 
 code ./output.md
+
+
+# Check for pending changes
+if [[ -n $(git status --porcelain) ]]; then
+  echo "Pending changes detected. Adding, committing, and pushing changes."
+
+  # Add all changes
+  git add .
+
+  # Commit the changes with a generic message including timestamp
+  git commit -m "WIP: $(date +'%Y-%m-%d %H:%M:%S')"
+
+  # Push the changes to the current branch
+  git push
+else
+  echo "No pending changes to push."
+fi
