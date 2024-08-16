@@ -38,7 +38,6 @@ create_default_files() {
 **/
 
 #include <bits/stdc++.h>
-using namespace std;
 
 typedef long long ll;
 
@@ -47,10 +46,13 @@ void solve() {
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    
+    int T; std::cin >> T; 
 
-    solve();
+    while(T--)
+     solve();
     return 0;
 }
 EOF

@@ -5,7 +5,8 @@
         "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
         "files.associations": {
             "iostream": "cpp",
-            "cmath": "cpp"
+            "cmath": "cpp",
+            "ostream": "cpp"
         }, 
         "C_Cpp.codeAnalysis.clangTidy.enabled": true,
         "C_Cpp.codeAnalysis.runAutomatically": true,
