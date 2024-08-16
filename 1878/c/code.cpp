@@ -18,10 +18,11 @@ void solve() {
         int new_sum = _sum + (k + 1 - i);
         if (new_sum == x) {
             std::cout << "YES\n";
+            return;
         }
     }
 
-    std::cout << "NO\n";    
+    std::cout << "NO\n";
 }
 
 int main() {
