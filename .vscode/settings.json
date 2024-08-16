@@ -1,0 +1,14 @@
+    {
+        "files.autoSave": "afterDelay",
+        "editor.defaultFormatter": "ms-vscode.cpptools",
+        "editor.formatOnSave": true,
+        "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
+        "files.associations": {
+            "iostream": "cpp",
+            "cmath": "cpp"
+        }, 
+        "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+        "C_Cpp.codeAnalysis.runAutomatically": true,
+        "C_Cpp.codeAnalysis.clangTidy.codeAction.formatFixes": true,
+        "C_Cpp.codeAnalysis.clangTidy.headerFilter": ".*"
+    }
