@@ -36,6 +36,8 @@ void solve() {
         std::cout << "NO\n";
         return;
     }
+
+    std::cout << "YES\n";
 }
 
 int main() {
