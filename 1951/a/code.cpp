@@ -22,7 +22,7 @@ void solve() {
 
     int ones_count = std::count(s.begin(), s.end(), '1');
 
-    if (ones_count % 2 != 0) {
+    if (ones_count & 1) {
         std::cout << "NO\n";
         return;
     } else {
