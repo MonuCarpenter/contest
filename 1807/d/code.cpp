@@ -23,10 +23,7 @@ void solve() {
     while (q--) {
         int l, r, k;
 
-        ll sum_till_l = 0;
-        ll sum_till_r_to_n = 0;
-
-        if ((pre[n] + pre[l - 1] - pre[r] + ((l - r + 1) * k)) % 2 != 0) {
+        if ((pre[n] - (pre[k] - pre[l - 1]) + ((r - l + 1) * k)) % 2 != 0) {
             std::cout << "YES\n";
         } else {
             std::cout << "NO\n";
