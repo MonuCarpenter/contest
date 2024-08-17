@@ -16,7 +16,7 @@ typedef long long ll;
  */
 
 void solve() {
-    int n, m, k;
+    ll n, m, k;
     std::cin >> n >> m >> k;
 
     if (m == 1 || n == 1) {
@@ -24,7 +24,7 @@ void solve() {
         return;
     }
 
-    int required_multiple = std::ceil(n / m);
+    ll required_multiple = std::ceil(n / m);
 
     if (n - required_multiple <= k) {
         std::cout << "NO\n";
