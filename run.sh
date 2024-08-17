@@ -46,7 +46,7 @@ void solve() {
 }
 
 int main() {
-    std::ios::sync_with_stdio(false);
+    std::ios::sync_with_stdio(0);
     std::cin.tie(nullptr);
     std::cout.tie(nullptr); 
         
