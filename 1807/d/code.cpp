@@ -17,7 +17,7 @@ void solve() {
 
     int a[n];
 
-    for (int i = i; i <= n; i++) {
+    for (int i = 1; i <= n; i++) {
         std::cin >> a[i];
         pre[i] = pre[i - 1] + a[i];
     }
