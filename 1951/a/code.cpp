@@ -26,8 +26,7 @@ void solve() {
         if (ones_count & 1) {
             std::cout << "NO\n";
             return;
-        }
-        if (ones_count == 2) {
+        } else {
             if (s[i] == '1')
                 if (i != n - 1 && s[i + 1] == '1')
                     std::cout << "NO\n";
