@@ -11,11 +11,13 @@ typedef long long ll;
 void solve() {
     ll n, q, pre[200005];
 
+    pre[0] = 0;
+
     std::cin >> n >> q;
 
     int a[n];
 
-    for (int i = i; i < n; i++) {
+    for (int i = i; i <= n; i++) {
         std::cin >> a[i];
         pre[i] = pre[i - 1] + a[i];
     }
@@ -23,7 +25,6 @@ void solve() {
     while (q--) {
         ll l, r, k;
         std::cin >> l >> k;
-        
 
         if ((pre[n] - (pre[k] - pre[l - 1]) + ((r - l + 1) * k)) % 2 != 0) {
             std::cout << "YES\n";
