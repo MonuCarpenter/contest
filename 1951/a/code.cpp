@@ -24,19 +24,20 @@ void solve() {
 
     if (ones_count % 2 != 0) {
         std::cout << "NO\n";
-
+        return;
     } else {
         if (ones_count == 2) {
-            for (int i = 0; i < s.size(); i++) {
-                if (s[i] == '1') {
-                    if (i != (n - 1) && s[i + 1] == '1') {
-                        std::cout << "NO\n";
-                    }
+            for (int i = 0; i + 1 < s.size(); i++) {
+                if (s[i] == '1' && s[i + 1] == '1') {
+                    std::cout << "NO\n";
+                    return;
                 }
             }
-        }
-        std::cout << "YES\n";
+        } else
+            std::cout << "YES\n";
+        return;
     }
+    std::cout << "YES\n";
 }
 int main() {
     std::ios::sync_with_stdio(false);
