@@ -13,10 +13,9 @@ void solve() {
     std ::cin >> n >> k >> x;
 
     ll min_sum = (k * (k + 1)) / 2;
-    ll max_sum = (n * (n + 1)) / 2;
-    ll temp = ((n - k) * (n - k + 1)) / 2;
+    ll max_sum = 3 * (n - 1);
 
-    if (x >= min_sum && x <= max_sum - temp) {
+    if (x >= min_sum && x <= max_sum) {
         std::cout << "YES\n";
     } else {
         std::cout << "NO\n";
