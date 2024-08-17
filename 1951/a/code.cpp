@@ -19,22 +19,23 @@ void solve() {
     std::cin >> n;
     std::string s;
     std::cin >> s;
-    int zero_count = 0;
-    if (s == "1") {
-        std::cout << "NO\n";
-        return;
-    } else {
-        for (int i = 0; i < n; i++) {
-            if (s[i] == '0')
-                zero_count++;
-        }
-        if (zero_count % 2 != 0) {
-            std::cout << "NO\n";
-            return;
+    int ones_count = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (s[i] == '0')
+            ones_count++;
+
+        if (s[i] == '1') {
+            if (i != n - 1 && s[i - 1] == '0') {
+                std::cout << "NO\n";
+                return;
+            }
         }
     }
-
-    std::cout << "YES\n";
+    if (ones_count & 1) {
+        std::cout << "NO\n";
+        return;
+    }
 }
 
 int main() {
