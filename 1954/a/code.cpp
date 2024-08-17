@@ -24,7 +24,10 @@ void solve() {
         return;
     }
 
-    int required_multiple = std::ceil(n / m);
+    int required_multiple = (n + (m - 1)) / m;
+    int _other_way = std::ceil(n / m);
+
+    std::cout << "--- diff --- " << required_multiple - _other_way << "\n";
 
     if (n - required_multiple <= k) {
         std::cout << "NO\n";
