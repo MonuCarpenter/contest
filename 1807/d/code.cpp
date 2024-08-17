@@ -26,7 +26,9 @@ void solve() {
         ll l, r, k;
         std::cin >> l >> r >> k;
 
-        if ((pre[n] - (pre[r] - pre[l - 1]) + ((r - l + 1) * k)) % 2 == 1) {
+        ll _cal = (pre[n] - (pre[r] - pre[l - 1]) + ((r - l + 1) * k));
+
+        if (_cal % 2 == 1) {
             std::cout << "YES\n";
         } else {
             std::cout << "NO\n";
