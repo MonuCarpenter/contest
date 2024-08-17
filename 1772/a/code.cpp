@@ -11,9 +11,13 @@ typedef long long ll;
 void solve() {
     int result = 0;
 
-    int x;
-    while (std::cin >> x) {
-        result += x;
+    std::string s;
+    std::cin >> s;
+
+    for (int i = 0; i < s.size(); i++) {
+        if (s[i] == '+') continue;
+
+        result += s[i] - '0';
     }
 
     std::cout << result << "\n";
