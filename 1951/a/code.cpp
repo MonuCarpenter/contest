@@ -36,16 +36,16 @@ void solve() {
 
         std::cout << "YES\n";
     }
+}
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
 
-    int main() {
-        std::ios::sync_with_stdio(false);
-        std::cin.tie(nullptr);
-        std::cout.tie(nullptr);
+    int T;
+    std::cin >> T;
 
-        int T;
-        std::cin >> T;
-
-        while (T--)
-            solve();
-        return 0;
-    }
+    while (T--)
+        solve();
+    return 0;
+}
