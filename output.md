@@ -1,36 +1,17 @@
-# Test Results - 2024-08-17 20:21:14
+# Test Results - 2024-08-17 20:26:09
 ## Test case #1
 
 ### Status
 <span style="color:green; font-weight:bold; font-size:larger;">Passed</span>
 
 ### Input
-5
-10
-1101010110
-10
-1001001110
-6
-000000
-1
-1
-12
-111111111111
 
 
 ### Output
-YES
-NO
-YES
-NO
-YES
+
 
 ### Expected Output
-YES
-NO
-YES
-NO
-YES
+
 
 ### Difference
 
@@ -40,32 +21,13 @@ YES
 <span style="color:green; font-weight:bold; font-size:larger;">Passed</span>
 
 ### Input
-5
-10
-1101010110
-10
-1001001110
-6
-000000
-1
-1
-12
-111111111111
 
 
 ### Output
-YES
-NO
-YES
-NO
-YES
+
 
 ### Expected Output
-YES
-NO
-YES
-NO
-YES
+
 
 ### Difference
 

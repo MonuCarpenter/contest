@@ -19,24 +19,23 @@ void solve() {
     std::cin >> n;
     std::string s;
     std::cin >> s;
-    assert(int(s.size()) == n);
+
     int ones_count = std::count(s.begin(), s.end(), '1');
 
     if (ones_count % 2 != 0) {
         std::cout << "NO\n";
         return;
-    } else {
-        if (ones_count == 2) {
-            for (int i = 0; (i + 1) < n; i++) {
-                if (s[i] == '1' && s[i + 1] == '1') {
-                    std::cout << "NO\n";
-                    return;
-                }
-            }
-        } else
-            std::cout << "YES\n";
-        return;
     }
+
+    if (ones_count == 2) {
+        for (int i = 0; (i + 1) < n; i++) {
+            if (s[i] == '1' && s[i + 1] == '1') {
+                std::cout << "NO\n";
+                return;
+            }
+        }
+    }
+
     std::cout << "YES\n";
 }
 int main() {
