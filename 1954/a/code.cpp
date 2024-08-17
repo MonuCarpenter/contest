@@ -2,23 +2,44 @@
  * Author: Monu Carpenter
  * Time: 2024-08-17 11:53:06
  * Handle: m_o_n_u
-**/
+ **/
 
 #include <bits/stdc++.h>
 
 typedef long long ll;
 
-void solve() {
+/**
+ *  Alice will paint every part and the Blob will paint at most k part
+ *  Alice --> m colors
+ *  Blob --> same colors
+ *
+ */
 
+void solve() {
+    int n, m, k;
+    std::cin >> n >> m >> k;
+
+    if (m == 1 || n == 1) {
+        std::cout << "NO\n";
+        return;
+    }
+
+    if ((n / m) == k) {
+        std::cout << "NO\n";
+        return;
+    }
+
+    std::cout << "YES\n";
 }
 
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
-    
-    int T; std::cin >> T; 
 
-    while(T--)
-     solve();
+    int T;
+    std::cin >> T;
+
+    while (T--)
+        solve();
     return 0;
 }
