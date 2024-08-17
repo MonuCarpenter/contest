@@ -24,7 +24,7 @@ void solve() {
         return;
     }
 
-    if ((n / m) >= k) {
+    if ((n / m) <= k) {
         std::cout << "NO\n";
         return;
     }
