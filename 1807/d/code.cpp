@@ -21,7 +21,9 @@ void solve() {
     }
 
     while (q--) {
-        int l, r, k;
+        ll l, r, k;
+        std::cin >> l >> k;
+        
 
         if ((pre[n] - (pre[k] - pre[l - 1]) + ((r - l + 1) * k)) % 2 != 0) {
             std::cout << "YES\n";
