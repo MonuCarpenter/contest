@@ -1,55 +1,95 @@
-# Test Results - 2024-08-17 19:40:34
+# Test Results - 2024-08-17 19:58:58
 ## Test case #1
 
 ### Status
-<span style="color:green; font-weight:bold; font-size:larger;">Passed</span>
+<span style="color:red; font-weight:bold; font-size:larger;">Failed</span>
 
 ### Input
-4
-4+2
-0+0
-3+7
-8+9
+5
+10
+1101010110
+10
+1001001110
+6
+000000
+1
+1
+12
+111111111111
 
 
 ### Output
-6
-0
-10
-17
+YES
+NO
+YES
+YES
+NO
+YES
+YES
 
 ### Expected Output
-6
-0
-10
-17
+YES
+NO
+YES
+NO
+YES
 
 ### Difference
+--- /dev/fd/63	2024-08-17 19:58:58.047441195 +0530
++++ /dev/fd/62	2024-08-17 19:58:58.047441195 +0530
+@@ -1,5 +1,7 @@
+ YES
+ NO
+ YES
++YES
+ NO
+ YES
++YES
 
 ## Test case #2
 
 ### Status
-<span style="color:green; font-weight:bold; font-size:larger;">Passed</span>
+<span style="color:red; font-weight:bold; font-size:larger;">Failed</span>
 
 ### Input
-4
-4+2
-0+0
-3+7
-8+9
+5
+10
+1101010110
+10
+1001001110
+6
+000000
+1
+1
+12
+111111111111
 
 
 ### Output
-6
-0
-10
-17
+YES
+NO
+YES
+YES
+NO
+YES
+YES
 
 ### Expected Output
-6
-0
-10
-17
+YES
+NO
+YES
+NO
+YES
 
 ### Difference
+--- /dev/fd/63	2024-08-17 19:58:58.072442118 +0530
++++ /dev/fd/62	2024-08-17 19:58:58.073442155 +0530
+@@ -1,5 +1,7 @@
+ YES
+ NO
+ YES
++YES
+ NO
+ YES
++YES
 

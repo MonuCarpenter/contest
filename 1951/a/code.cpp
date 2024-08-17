@@ -22,18 +22,22 @@ void solve() {
 
     int ones_count = std::count(s.begin(), s.end(), '1');
 
-    for (int i = 0; i < n; i++) {
-        if (ones_count & 1) {
-            std::cout << "NO\n";
-            return;
-        }
-         {
-            if (s[i] == '1')
-                if (i != n - 1 && s[i + 1] == '1')
-                    std::cout << "NO\n";
-            return;
+    if (ones_count % 2 != 0) {
+        std::cout << "NO\n";
+
+    } else {
+        if (ones_count == 2) {
+            for (int i = 0; i < s.size(); i++) {
+                if (s[i] == '1') {
+                    if (i != (n - 1) && s[i + 1] == '1') {
+                        std::cout << "NO\n";
+                    }
+                }
+            }
+            std::cout << "YES\n";
         }
     }
+
     std::cout << "YES\n";
 }
 int main() {
