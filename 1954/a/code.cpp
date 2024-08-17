@@ -24,7 +24,7 @@ void solve() {
         return;
     }
 
-    int required_multiple = (n + (m - 1)) / m;
+    int required_multiple = std::ceil(n / m);
 
     if (n - required_multiple <= k) {
         std::cout << "NO\n";
