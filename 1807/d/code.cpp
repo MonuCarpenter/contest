@@ -9,25 +9,24 @@
 typedef long long ll;
 
 void solve() {
-    int n, q;
+    ll n, q, pre[200005];
+
     std::cin >> n >> q;
 
     int a[n];
+
+    for (int i = i; i < n; i++) {
+        std::cin >> a[i];
+        pre[i] = pre[i - 1] + a[i];
+    }
+
     while (q--) {
         int l, r, k;
 
         ll sum_till_l = 0;
         ll sum_till_r_to_n = 0;
 
-        for (int i = 0; i < l - 1; i++) {
-            sum_till_l += a[i];
-        }
-
-        for (int i = r - 1; i < n; i++) {
-            sum_till_r_to_n += a[i];
-        }
-
-        if ((sum_till_l + sum_till_r_to_n + ((l - r + 1) * k)) % 2 != 0) {
+        if ((pre[n] + pre[l - 1] - pre[r] + ((l - r + 1) * k)) % 2 != 0) {
             std::cout << "YES\n";
         } else {
             std::cout << "NO\n";
