@@ -33,9 +33,8 @@ void solve() {
                     std::cout << "NO\n";
             return;
         }
-
-        std::cout << "YES\n";
     }
+    std::cout << "YES\n";
 }
 int main() {
     std::ios::sync_with_stdio(false);
