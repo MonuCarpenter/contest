@@ -1,8 +1,8 @@
-# Test Results - 2024-08-17 16:57:42
+# Test Results - 2024-08-17 16:58:50
 ## Test case #1
 
 ### Status
-<span style="color:red; font-weight:bold; font-size:larger;">Failed</span>
+<span style="color:green; font-weight:bold; font-size:larger;">Passed</span>
 
 ### Input
 5
@@ -24,7 +24,6 @@ NO
 YES
 NO
 YES
-YES
 
 ### Expected Output
 YES
@@ -34,18 +33,11 @@ NO
 YES
 
 ### Difference
---- /dev/fd/63	2024-08-17 16:57:42.494194903 +0530
-+++ /dev/fd/62	2024-08-17 16:57:42.494194903 +0530
-@@ -3,3 +3,4 @@
- YES
- NO
- YES
-+YES
 
 ## Test case #2
 
 ### Status
-<span style="color:red; font-weight:bold; font-size:larger;">Failed</span>
+<span style="color:green; font-weight:bold; font-size:larger;">Passed</span>
 
 ### Input
 5
@@ -67,7 +59,6 @@ NO
 YES
 NO
 YES
-YES
 
 ### Expected Output
 YES
@@ -77,11 +68,4 @@ NO
 YES
 
 ### Difference
---- /dev/fd/63	2024-08-17 16:57:42.515195429 +0530
-+++ /dev/fd/62	2024-08-17 16:57:42.515195429 +0530
-@@ -3,3 +3,4 @@
- YES
- NO
- YES
-+YES
 

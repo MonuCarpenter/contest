@@ -22,18 +22,19 @@ void solve() {
     int zero_count = 0;
     if (s == "1") {
         std::cout << "NO\n";
+        return;
     } else {
         for (int i = 0; i < n; i++) {
             if (s[i] == '0')
                 zero_count++;
         }
+        if (zero_count % 2 != 0) {
+            std::cout << "NO\n";
+            return;
+        }
     }
 
-    if (zero_count % 2 != 0) {
-        std::cout << "NO\n";
-    } else {
-        std::cout << "YES\n";
-    }
+    std::cout << "YES\n";
 }
 
 int main() {
