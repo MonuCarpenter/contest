@@ -24,9 +24,9 @@ void solve() {
         return;
     }
 
-    int _min_diff_colors = ((n - 1) * (m - 1)) / m;
+    int _ = (n + m - 1) / m;
 
-    if (_min_diff_colors <= k) {
+     if (n - _ <= k) {
         std::cout << "NO\n";
         return;
     }
