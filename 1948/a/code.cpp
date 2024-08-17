@@ -15,9 +15,9 @@ void solve() {
         std::cout << "NO" << '\n';
         return;
     }
-    
+
     std::cout << "YES" << '\n';
-    for (int i = 0; i < n / 2; ++i)
+    for (int i = 1; i < n / 2; i += 2)
         for (int j = 0; j < 2; ++j)
             std::cout << "AB"[i & 1];
     std::cout << '\n';
