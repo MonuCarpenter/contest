@@ -1,4 +1,4 @@
-# Test Results - 2024-08-17 19:32:46
+# Test Results - 2024-08-17 19:33:20
 ## Test case #1
 
 ### Status
@@ -13,9 +13,10 @@
 
 ### Output
 YES
-BB
+AAAA
 NO
 YES
+AA
 
 ### Expected Output
 YES 
@@ -25,18 +26,18 @@ YES
 AA
 
 ### Difference
---- /dev/fd/63	2024-08-17 19:32:46.493083235 +0530
-+++ /dev/fd/62	2024-08-17 19:32:46.493083235 +0530
-@@ -1,5 +1,4 @@
+--- /dev/fd/63	2024-08-17 19:33:20.354099836 +0530
++++ /dev/fd/62	2024-08-17 19:33:20.354099836 +0530
+@@ -1,5 +1,5 @@
 -YES 
 -AABBAA 
 -NO 
 -YES 
--AA
 +YES
-+BB
++AAAA
 +NO
 +YES
+ AA
 
 ## Test case #2
 
@@ -52,9 +53,10 @@ AA
 
 ### Output
 YES
-BB
+AAAA
 NO
 YES
+AA
 
 ### Expected Output
 YES 
@@ -64,16 +66,16 @@ YES
 AA
 
 ### Difference
---- /dev/fd/63	2024-08-17 19:32:46.506083627 +0530
-+++ /dev/fd/62	2024-08-17 19:32:46.506083627 +0530
-@@ -1,5 +1,4 @@
+--- /dev/fd/63	2024-08-17 19:33:20.367100224 +0530
++++ /dev/fd/62	2024-08-17 19:33:20.367100224 +0530
+@@ -1,5 +1,5 @@
 -YES 
 -AABBAA 
 -NO 
 -YES 
--AA
 +YES
-+BB
++AAAA
 +NO
 +YES
+ AA
 
