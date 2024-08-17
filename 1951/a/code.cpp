@@ -19,36 +19,33 @@ void solve() {
     std::cin >> n;
     std::string s;
     std::cin >> s;
-    int ones_count = 0;
+
+    int ones_count = std::count(s.begin(), s.end(), '1');
 
     for (int i = 0; i < n; i++) {
-        if (s[i] == '1')
-            ones_count++;
-
-        if (s[i] == '1') {
-            if (i != n - 1 && s[i + 1] == '1') {
-                std::cout << "NO\n";
-                return;
-            }
+        if (ones_count & 1) {
+            std::cout << "NO\n";
+            return;
         }
+        if (ones_count == 2) {
+            if (s[i] == '1')
+                if (i != n - 1 && s[i + 1] == '1')
+                    std::cout << "NO\n";
+            return;
+        }
+
+        std::cout << "YES\n";
     }
-    if (ones_count & 1) {
-        std::cout << "NO\n";
-        return;
+
+    int main() {
+        std::ios::sync_with_stdio(false);
+        std::cin.tie(nullptr);
+        std::cout.tie(nullptr);
+
+        int T;
+        std::cin >> T;
+
+        while (T--)
+            solve();
+        return 0;
     }
-
-    std::cout << "YES\n";
-}
-
-int main() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-    std::cout.tie(nullptr);
-
-    int T;
-    std::cin >> T;
-
-    while (T--)
-        solve();
-    return 0;
-}
