@@ -27,7 +27,7 @@ void solve() {
             sum_till_r_to_n += a[i];
         }
 
-        if ((sum_till_l + sum_till_r_to_n + (l - r + 2) * k) % 2 != 0) {
+        if ((sum_till_l + sum_till_r_to_n + ((l - r + 1) * k)) % 2 != 0) {
             std::cout << "YES\n";
         } else {
             std::cout << "NO\n";
