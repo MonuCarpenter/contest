@@ -12,10 +12,7 @@ typedef long long ll;
 // n is even then divide by two
 
 void solve(int& x) {
-    if (x == 1) {
-        std::cout << 1;
-        return;
-    }
+    if (x == 1) return;
 
     if (x & 1) {
         x = x * 3 + 1;
@@ -33,6 +30,8 @@ int main() {
 
     int x;
     std::cin >> x;
+
+    std::cout << x << " ";
 
     solve(x);
     return 0;
