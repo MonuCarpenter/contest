@@ -12,17 +12,14 @@ void solve() {
     ll n, k, x;
     std ::cin >> n >> k >> x;
 
-    ll _sum = k * ((1 + k) / 2);
+    ll min_sum = x * (x + 1) / 2;
+    ll max_sum = n * (n + 1) - (n - x) * (n - x - 1);
 
-    for (int i = 1; i < n; i++) {
-        int new_sum = _sum + (k + 1 - i);
-        if (new_sum == x) {
-            std::cout << "YES\n";
-            return;
-        }
+    if (k <= min_sum && k >= max_sum) {
+        std::cout << "YES\n";
+    } else {
+        std::cout << "NO\n";
     }
-
-    std::cout << "NO\n";
 }
 
 int main() {
