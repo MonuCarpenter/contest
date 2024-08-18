@@ -97,7 +97,8 @@
             "typeindex": "cpp",
             "typeinfo": "cpp",
             "valarray": "cpp",
-            "variant": "cpp"
+            "variant": "cpp",
+            "ios": "cpp"
         }, 
         "C_Cpp.codeAnalysis.clangTidy.enabled": true,
         "C_Cpp.codeAnalysis.runAutomatically": true,
