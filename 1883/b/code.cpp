@@ -24,8 +24,6 @@ void solve() {
 
     std::string s;
     std::cin >> s;
-
- 
 }
 
 int main() {
