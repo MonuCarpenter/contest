@@ -18,21 +18,11 @@ void solve() {
         std::cin >> a[i];
     }
 
-    int start = 0;
-    int end = n - 1;
-
-    while (k) {
-        int temp = a[k];
-        a[k] = a[end];
-        a[end] = temp;
-
-        start++;
-        end--;
-
-        k--;
+    for (int i = n - k; i < n; i++) {
+        std::cout << a[i] << "\n";
     }
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < k; i++) {
         std::cout << a[i] << "\n";
     }
 }
