@@ -19,12 +19,14 @@ void solve() {
     }
 
     for (int i = n - k; i < n; i++) {
-        std::cout << a[i] << "\n";
+        std::cout << a[i] << " ";
     }
 
     for (int i = 0; i < n - k; i++) {
-        std::cout << a[i] << "\n";
+        std::cout << a[i] << " ";
     }
+
+    std::cout << "\n";
 }
 
 int main() {
