@@ -22,7 +22,7 @@ void solve() {
         std::cout << a[i] << "\n";
     }
 
-    for (int i = 0; i < k; i++) {
+    for (int i = 0; i <= k; i++) {
         std::cout << a[i] << "\n";
     }
 }
