@@ -38,6 +38,7 @@ create_default_files() {
 **/
 
 #include <bits/stdc++.h>
+#define _for(n) for (int i = 0; i < n; i++)
 
 typedef long long ll;
 
@@ -48,14 +49,18 @@ void solve() {
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
-    std::cout.tie(nullptr); 
-        
-    int T; std::cin >> T; 
+    std::cout.tie(nullptr);
 
-    while(T--)
-     solve();
+    int T;
+    std::cin >> T;
+
+    while (T--)
+        solve();
+
+    std::cout.flush();
     return 0;
 }
+
 EOF
         echo "Default code.cpp created in $folder."
     fi
@@ -88,7 +93,6 @@ EOF
 # Function to compile and run the C++ program
 run_tests() {
     local folder=$1
-    local log_file="output.md"
 
     # Compile C++ program
     g++ -o "$folder/code" "$folder/code.cpp"
@@ -99,9 +103,6 @@ run_tests() {
         exit 1
     fi
 
-    # Start fresh logging
-    echo "# Test Results - $(date +"%Y-%m-%d %H:%M:%S")" > "$log_file"
-
     # Loop through all input files
     for input_file in "$folder"/input*.txt; do
         test_case_number=$(basename "$input_file" | sed 's/input\([0-9]*\)\.txt/\1/')
@@ -109,29 +110,21 @@ run_tests() {
 
         # Check if input file is empty
         if [ ! -s "$input_file" ]; then
-            {
-                echo "## Test case #${test_case_number}"
-                echo
-                echo "### Status"
-                echo "<span style=\"color:blue; font-weight:bold; font-size:larger;\">Skipped (Input file is empty)</span>"
-                echo
-                echo "### Input"
-                echo "Empty input file"
-                echo
-                echo "### Output"
-                echo "No output"
-                echo
-                echo "### Expected Output"
-                if [ -f "$output_file" ]; then
-                    cat "$output_file"
-                else
-                    echo "No expected output file"
-                fi
-                echo
-                echo "### Difference"
-                echo "No difference to show"
-                echo
-            } >> "$log_file"
+            echo -e "\nTest case #${test_case_number}:"
+            echo -e "\033[34mStatus: \033[1;34mSkipped (Input file is empty)\033[0m"
+            echo -e "\033[33mInput:\033[0m"
+            echo -e "Empty input file"
+            echo -e "\033[33mOutput:\033[0m"
+            echo -e "No output"
+            echo -e "\033[33mExpected Output:\033[0m"
+            if [ -f "$output_file" ]; then
+                cat "$output_file"
+            else
+                echo -e "No expected output file"
+            fi
+            echo -e "\033[33mDifference:\033[0m"
+            echo -e "No difference to show"
+            echo
             continue
         fi
 
@@ -141,31 +134,23 @@ run_tests() {
 
         # Compare output and expected output
         if [ "$output" = "$expected" ]; then
-            status="<span style=\"color:green; font-weight:bold; font-size:larger;\">Passed</span>"
+            status="\033[32mPassed\033[0m"
         else
-            status="<span style=\"color:red; font-weight:bold; font-size:larger;\">Failed</span>"
+            status="\033[31mFailed\033[0m"
         fi
 
-        # Log results
-        {
-            echo "## Test case #${test_case_number}"
-            echo
-            echo "### Status"
-            echo "$status"
-            echo
-            echo "### Input"
-            cat "$input_file"
-            echo
-            echo "### Output"
-            echo "$output"
-            echo
-            echo "### Expected Output"
-            echo "$expected"
-            echo
-            echo "### Difference"
-            diff -u <(echo "$expected") <(echo "$output")
-            echo
-        } >> "$log_file"
+        # Log results directly to console
+        echo -e "\nTest case #${test_case_number}:"
+        echo -e "\033[33mStatus: $status\033[0m"
+        echo -e "\033[33mInput:\033[0m"
+        cat "$input_file"
+        echo -e "\033[33mOutput:\033[0m"
+        echo "$output"
+        echo -e "\033[33mExpected Output:\033[0m"
+        echo "$expected"
+        echo -e "\033[33mDifference:\033[0m"
+        diff -u <(echo "$expected") <(echo "$output")
+        echo
     done
 
     # Clean up - remove compiled program
@@ -197,22 +182,3 @@ display_loader $test_pid
 
 # Wait for the tests to complete
 wait $test_pid
-
-code ./output.md
-
-
-# Check for pending changes
-if [[ -n $(git status --porcelain) ]]; then
-  echo "Pending changes detected. Adding, committing, and pushing changes."
-
-  # Add all changes
-  git add .
-
-  # Commit the changes with a generic message including timestamp
-  git commit -m "WIP: $(date +'%Y-%m-%d %H:%M:%S')"
-
-  # Push the changes to the current branch
-  git push
-else
-  echo "No pending changes to push."
-fi
