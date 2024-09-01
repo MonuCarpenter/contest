@@ -43,11 +43,12 @@ create_default_files() {
 
     # Create default C++ file if it does not exist
    if is_effectively_empty "$folder/code.cpp"; then
-        cat > "$folder/code.cpp" << 'EOF'
+        cat > "$folder/code.cpp" << EOF
 /*
  * Author: Monu Carpenter
- * Time: $(date +"%Y-%m-%d %H:%M:%S")
  * Handle: m_o_n_u
+ * Time: $(date +"%Y-%m-%d %H:%M:%S")
+ * Problem: $folder
 **/
 
 #include <bits/stdc++.h>
