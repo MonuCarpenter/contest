@@ -116,5 +116,6 @@
         "C_Cpp.codeAnalysis.clangTidy.enabled": true,
         "C_Cpp.codeAnalysis.runAutomatically": true,
         "C_Cpp.codeAnalysis.clangTidy.codeAction.formatFixes": true,
-        "C_Cpp.codeAnalysis.clangTidy.headerFilter": ".*"
+        "C_Cpp.codeAnalysis.clangTidy.headerFilter": ".*",
+        "C_Cpp.errorSquiggles": "disabled"
     }

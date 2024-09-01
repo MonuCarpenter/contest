@@ -1,6 +1,6 @@
 /*
  * Author: Monu Carpenter
- * Time: 2024-09-01 01:13:07
+ * Time: 2024-08-31 19:17:23
  * Handle: m_o_n_u
  **/
 
@@ -10,13 +10,6 @@
 typedef long long ll;
 
 void solve() {
-    ll n, m, a;
-    std::cin >> n >> m >> a;
-
-    ll down = n % a == 0 ? n / a : (n / a) + 1;
-    ll right = m % a == 0 ? m / a : (m / a) + 1;
-
-    std::cout << down * right << "\n";
 }
 
 int main() {
@@ -24,11 +17,11 @@ int main() {
     std::cin.tie(nullptr);
     std::cout.tie(nullptr);
 
-    // int T;
-    // std::cin >> T;
+    int T;
+    std::cin >> T;
 
-    // while (T--)
-    solve();
+    while (T--)
+        solve();
 
     std::cout.flush();
     return 0;

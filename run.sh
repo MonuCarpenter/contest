@@ -1,16 +1,27 @@
 #!/bin/bash
 
+
+# Function to check if a file is effectively empty (including whitespace)
+is_effectively_empty() {
+    local file=$1
+    # Check if the file is empty or contains only whitespace
+    if [ ! -s "$file" ] || [ -z "$(tr -d '[:space:]' < "$file")" ]; then
+        return 0  # True, file is empty or whitespace only
+    else
+        return 1  # False, file has non-whitespace content
+    fi
+}
 # Function to display loader animation
 display_loader() {
     local pid=$1
     local delay=0.1
-    spin='-\|/'
+    local spin='-\|/'
 
     echo -ne "Running tests..."
     while kill -0 $pid 2> /dev/null; do
         local temp=${spin#?}
         printf "[%c]" "$spin"
-        local spin=$temp${spin%"$temp"}
+        spin=$temp${spin%"$temp"}
         sleep $delay
         printf "\b\b\b"
     done
@@ -23,14 +34,16 @@ create_default_files() {
     local folder=$1
 
     # Create folder if it doesn't exist
-    if [ ! -d "$folder" ]; then
-        mkdir -p "$folder"
-        echo "Folder $folder created."
-    fi
+    [ ! -d "$folder" ] && mkdir -p "$folder" && echo "Folder $folder created."
 
-    # Check if code.cpp exists, if not create default template
-    if [ ! -f "$folder/code.cpp" ]; then
-        cat > "$folder/code.cpp" <<EOF
+    # Create default files if they do not exist
+    for file in code.cpp input1.txt output1.txt input2.txt output2.txt; do
+        [ ! -f "$folder/$file" ] && echo -e "" > "$folder/$file" && echo "Default $file created in $folder."
+    done
+
+    # Create default C++ file if it does not exist
+   if is_effectively_empty "$folder/code.cpp"; then
+        cat > "$folder/code.cpp" << 'EOF'
 /*
  * Author: Monu Carpenter
  * Time: $(date +"%Y-%m-%d %H:%M:%S")
@@ -60,44 +73,19 @@ int main() {
     std::cout.flush();
     return 0;
 }
-
 EOF
         echo "Default code.cpp created in $folder."
     fi
-
-    # Check if input1.txt exists, if not create default template
-    if [ ! -f "$folder/input1.txt" ]; then
-        echo -e "" > "$folder/input1.txt"
-        echo "Default input1.txt created in $folder."
-    fi
-
-    # Check if output1.txt exists, if not create default template
-    if [ ! -f "$folder/output1.txt" ]; then
-        echo -e "" > "$folder/output1.txt"
-        echo "Default output1.txt created in $folder."
-    fi
-
-    # Check if input2.txt exists, if not create default template
-    if [ ! -f "$folder/input2.txt" ]; then
-        echo -e "" > "$folder/input2.txt"
-        echo "Default input2.txt created in $folder."
-    fi
-
-    # Check if output2.txt exists, if not create default template
-    if [ ! -f "$folder/output2.txt" ]; then
-        echo -e "" > "$folder/output2.txt"
-        echo "Default output2.txt created in $folder."
-    fi
 }
+
+
 
 # Function to compile and run the C++ program
 run_tests() {
     local folder=$1
 
     # Compile C++ program
-    g++ -o "$folder/code" "$folder/code.cpp"
-
-    # Check if compilation was successful
+    g++-14 -std=c++20 -o "$folder/code" "$folder/code.cpp"
     if [ $? -ne 0 ]; then
         echo "Compilation failed for folder $folder. Exiting."
         exit 1
@@ -108,28 +96,29 @@ run_tests() {
         test_case_number=$(basename "$input_file" | sed 's/input\([0-9]*\)\.txt/\1/')
         output_file="$folder/output${test_case_number}.txt"
 
-        # Check if input file is empty
-        if [ ! -s "$input_file" ]; then
+        # Check if input file is effectively empty
+        if is_effectively_empty "$input_file"; then
             echo -e "\nTest case #${test_case_number}:"
-            echo -e "\033[34mStatus: \033[1;34mSkipped (Input file is empty)\033[0m"
+            echo -e "\033[34mStatus: \033[1;34mSkipped\033[0m"
             echo -e "\033[33mInput:\033[0m"
-            echo -e "Empty input file"
+            echo -e "No Input"
             echo -e "\033[33mOutput:\033[0m"
-            echo -e "No output"
+            echo -e "No expected output file"
             echo -e "\033[33mExpected Output:\033[0m"
-            if [ -f "$output_file" ]; then
-                cat "$output_file"
-            else
-                echo -e "No expected output file"
-            fi
+            [ -f "$output_file" ] && cat "$output_file" || echo -e "No expected output file"
             echo -e "\033[33mDifference:\033[0m"
             echo -e "No difference to show"
             echo
             continue
         fi
-
+        
         # Run the test case
         output=$("$folder/code" < "$input_file" 2>/dev/null)
+        if [ $? -ne 0 ]; then
+            echo "Error running test case $test_case_number"
+            continue
+        fi
+
         expected=$(cat "$output_file")
 
         # Compare output and expected output
@@ -160,18 +149,13 @@ run_tests() {
 # Check if argument (folder path) is provided
 if [ $# -eq 0 ]; then
     echo "No folder path provided. Running in current directory..."
-
-    # Set folder path to current directory
     folder=$(pwd)
-
-    # Check if default files exist, create if necessary
-    create_default_files "$folder"
 else
     folder=$1
-
-    # Create default files in the specified folder if they don't exist
-    create_default_files "$folder"
 fi
+
+# Create default files in the specified folder if they don't exist
+create_default_files "$folder"
 
 # Run tests based on folder path in the background
 run_tests "$folder" &
