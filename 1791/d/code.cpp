@@ -5,43 +5,40 @@
  * Problem: 1791/d
  **/
 
-#include <bits/stdc++.h>
-#define _for(s, n) for (int i = s; i < n; i++)
-
-typedef long long ll;
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <vector>
 
 void solve() {
     int n;
-    std::cin >> n;
-
-    char a[n];
-
-    _for(0, n) std::cin >> a[i];
-
-    std::map<char, int> _map;
-
-    _for(0, n) _map[a[i]]++;
-
-    int result = 0;
-    int flag = false;
-    for (auto x : _map) {
-        if (x.second > 0) result++;
-        if (x.second > 1) flag = true;
+    std::string s;
+    std::cin >> n >> s;
+    std::vector<int> charCount(26, 0), prefixCount(26, 0);
+    for (char c : s) {
+        charCount[c - 'a']++;
     }
-    std::cout << (flag ? ++result : result) << "\n";
+    int maxDistinctChars = 0;
+    for (char c : s) {
+        charCount[c - 'a']--;
+        prefixCount[c - 'a']++;
+        int currentDistinctChars = 0;
+        for (int i = 0; i < 26; ++i) {
+            currentDistinctChars += std::min(1, charCount[i]) + std::min(1, prefixCount[i]);
+        }
+        maxDistinctChars = std::max(maxDistinctChars, currentDistinctChars);
+    }
+    std::cout << maxDistinctChars << "\n";
 }
 
 int main() {
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
-    std::cout.tie(nullptr);
+    int t;
+    std::cin >> t;
 
-    int T;
-    std::cin >> T;
-
-    while (T--)
+    while (t--)
         solve();
 
-    std::cout.flush();
     return 0;
 }
