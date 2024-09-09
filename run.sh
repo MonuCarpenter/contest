@@ -14,19 +14,17 @@ is_effectively_empty() {
 # Function to display loader animation
 display_loader() {
     local pid=$1
-    local delay=0.1
-    local spin='-\|/'
-
-    echo -ne "Running tests..."
+    local i=0
+    local spin=("⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏")
+    local frame=0
+    echo -ne "Running tests... "
     while kill -0 $pid 2> /dev/null; do
-        local temp=${spin#?}
-        printf "[%c]" "$spin"
-        spin=$temp${spin%"$temp"}
-        sleep $delay
-        printf "\b\b\b"
+        printf "\b${spin[$frame]}"
+        frame=$(( (frame + 1) % 10 ))
+        sleep 0.1
+        ((i++))
     done
-    echo -ne "      \b\b\b\b\b\b"
-    echo -ne "\n"
+    printf "\bDone! (%ds)\n" "$i"
 }
 
 # Function to create default folder structure and files
