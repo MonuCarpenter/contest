@@ -44,7 +44,7 @@ void create_default_files(const fs::path& folder) {
         out << "/*\n"
             << " * Author: Monu Carpenter\n"
             << " * Handle: m_o_n_u\n"
-            << " * Time: " << std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()) << "\n"
+            << " * Time: " << __DATE__ << " " << __TIME__ << "\n"
             << " * Problem: " << folder.string() << "\n"
             << "*/\n\n"
             << "#include <bits/stdc++.h>\n"
