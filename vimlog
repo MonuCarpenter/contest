@@ -1,0 +1,979 @@
+
+chdir(/usr/share/vim)
+fchdir() to previous dir
+sourcing "$VIM/vimrc"
+finished sourcing $VIM/vimrc
+chdir(/usr/share/vim/vim90)
+fchdir() to previous dir
+could not source "$VIMRUNTIME/macmap.vim"
+chdir(/Users/monucarpenter)
+fchdir() to previous dir
+sourcing "$HOME/.vimrc"
+chdir(/usr/share/vim/vim90/syntax)
+fchdir() to previous dir
+line 2: sourcing "/usr/share/vim/vim90/syntax/syntax.vim"
+chdir(/usr/share/vim/vim90/syntax)
+fchdir() to previous dir
+line 20: sourcing "/usr/share/vim/vim90/syntax/synload.vim"
+chdir(/usr/share/vim/vim90/syntax)
+fchdir() to previous dir
+line 22: sourcing "/usr/share/vim/vim90/syntax/syncolor.vim"
+chdir(/usr/share/vim/vim90/colors/lists)
+fchdir() to previous dir
+line 54: sourcing "/usr/share/vim/vim90/colors/lists/default.vim"
+finished sourcing /usr/share/vim/vim90/colors/lists/default.vim
+continuing in /usr/share/vim/vim90/syntax/syncolor.vim
+finished sourcing /usr/share/vim/vim90/syntax/syncolor.vim
+continuing in /usr/share/vim/vim90/syntax/synload.vim
+finished sourcing /usr/share/vim/vim90/syntax/synload.vim
+continuing in /usr/share/vim/vim90/syntax/syntax.vim
+chdir(/usr/share/vim/vim90)
+fchdir() to previous dir
+line 26: sourcing "/usr/share/vim/vim90/filetype.vim"
+not found in 'runtimepath': "ftdetect/*.vim"
+finished sourcing /usr/share/vim/vim90/filetype.vim
+continuing in /usr/share/vim/vim90/syntax/syntax.vim
+Executing FileType Autocommands for "*"
+autocommand 0verbose exe "set syntax=" . expand("<amatch>")
+
+Executing BufRead Autocommands for "*"
+autocommand if !did_filetype() && expand("<amatch>") !~ g:ft_ignore_pat | runtime! scripts.vim | endif
+
+chdir(/usr/share/vim/vim90)
+fchdir() to previous dir
+line 0: sourcing "/usr/share/vim/vim90/scripts.vim"
+chdir(/usr/share/vim/vim90/autoload/dist)
+fchdir() to previous dir
+line 27: sourcing "/usr/share/vim/vim90/autoload/dist/script.vim"
+finished sourcing /usr/share/vim/vim90/autoload/dist/script.vim
+continuing in /usr/share/vim/vim90/scripts.vim
+finished sourcing /usr/share/vim/vim90/scripts.vim
+continuing in BufRead Autocommands for "*"
+Executing BufRead Autocommands for "*"
+autocommand if !did_filetype() && expand("<amatch>") !~ g:ft_ignore_pat    && (expand("<amatch>") =~# '\.conf$'^I|| getline(1) =~ '^#' || getline(2) =~ '^#'^I|| getline(3) =~ '^#' || getline(4) =~ '^#'^I|| getline(5) =~ '^#') |   setf FALLBACK conf | endif
+
+finished sourcing /usr/share/vim/vim90/syntax/syntax.vim
+continuing in /Users/monucarpenter/.vimrc
+chdir(/Users/monucarpenter/.vim/autoload)
+fchdir() to previous dir
+line 14: sourcing "/Users/monucarpenter/.vim/autoload/plug.vim"
+finished sourcing /Users/monucarpenter/.vim/autoload/plug.vim
+continuing in /Users/monucarpenter/.vimrc
+chdir(/usr/share/vim/vim90)
+fchdir() to previous dir
+line 14: sourcing "/usr/share/vim/vim90/ftoff.vim"
+finished sourcing /usr/share/vim/vim90/ftoff.vim
+continuing in plug#end
+chdir(/usr/share/vim/vim90)
+fchdir() to previous dir
+line 86: sourcing "/usr/share/vim/vim90/filetype.vim"
+not found in 'runtimepath': "ftdetect/*.vim"
+finished sourcing /usr/share/vim/vim90/filetype.vim
+continuing in plug#end
+chdir(/usr/share/vim/vim90)
+fchdir() to previous dir
+line 86: sourcing "/usr/share/vim/vim90/ftplugin.vim"
+finished sourcing /usr/share/vim/vim90/ftplugin.vim
+continuing in plug#end
+chdir(/usr/share/vim/vim90)
+fchdir() to previous dir
+line 86: sourcing "/usr/share/vim/vim90/indent.vim"
+finished sourcing /usr/share/vim/vim90/indent.vim
+continuing in plug#end
+chdir(/usr/share/vim/vim90/colors/lists)
+fchdir() to previous dir
+line 55: sourcing "/usr/share/vim/vim90/colors/lists/default.vim"
+finished sourcing /usr/share/vim/vim90/colors/lists/default.vim
+continuing in /Users/monucarpenter/.vimrc
+not found in 'runtimepath': "colors/onedark.vim"
+not found in 'packpath': "colors/onedark.vim"
+not found in 'packpath': "colors/onedark.vim"
+                                             Error detected while processing /Users/monucarpenter/.vimrc:
+line   55:
+E185: Cannot find color scheme 'onedark'
+finished sourcing $HOME/.vimrc
+not found in 'packpath': "pack/*/start/*"
+chdir(/Users/monucarpenter/.vim/plugged/coc.nvim/plugin)
+fchdir() to previous dir
+sourcing "/Users/monucarpenter/.vim/plugged/coc.nvim/plugin/coc.vim"
+chdir(/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc)
+fchdir() to previous dir
+line 38: sourcing "/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/rpc.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/rpc.vim
+continuing in /Users/monucarpenter/.vim/plugged/coc.nvim/plugin/coc.vim
+chdir(/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc)
+fchdir() to previous dir
+line 54: sourcing "/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/util.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/util.vim
+continuing in coc#rpc#start_server
+chdir(/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc)
+fchdir() to previous dir
+line 58: sourcing "/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/client.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/client.vim
+continuing in coc#rpc#start_server
+chdir(/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc)
+fchdir() to previous dir
+line 10: sourcing "/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/api.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/api.vim
+continuing in <SNR>14_Enable
+finished sourcing /Users/monucarpenter/.vim/plugged/coc.nvim/plugin/coc.vim
+chdir(/Users/monucarpenter/.vim/plugged/ale/plugin)
+fchdir() to previous dir
+sourcing "/Users/monucarpenter/.vim/plugged/ale/plugin/ale.vim"
+chdir(/Users/monucarpenter/.vim/plugged/ale/autoload/ale)
+fchdir() to previous dir
+line 371: sourcing "/Users/monucarpenter/.vim/plugged/ale/autoload/ale/events.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/ale/autoload/ale/events.vim
+continuing in /Users/monucarpenter/.vim/plugged/ale/plugin/ale.vim
+finished sourcing /Users/monucarpenter/.vim/plugged/ale/plugin/ale.vim
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/plugin)
+fchdir() to previous dir
+sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/plugin/NERD_tree.vim"
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/autoload)
+fchdir() to previous dir
+line 59: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/autoload/nerdtree.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/autoload/nerdtree.vim
+continuing in /Users/monucarpenter/.vim/plugged/nerdtree/plugin/NERD_tree.vim
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 1: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/path.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/path.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 2: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/menu_controller.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/menu_controller.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 3: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/menu_item.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/menu_item.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 4: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/key_map.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/key_map.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 5: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/bookmark.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/bookmark.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 6: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/tree_file_node.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/tree_file_node.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 7: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/tree_dir_node.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/tree_dir_node.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 8: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/opener.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/opener.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 9: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/creator.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/creator.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 10: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/flag_set.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/flag_set.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 11: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/nerdtree.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/nerdtree.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 12: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/ui.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/ui.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 13: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/event.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/event.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree)
+fchdir() to previous dir
+line 14: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/notifier.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/lib/nerdtree/notifier.vim
+continuing in nerdtree#loadClassFiles
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/autoload/nerdtree)
+fchdir() to previous dir
+line 148: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/autoload/nerdtree/ui_glue.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/autoload/nerdtree/ui_glue.vim
+continuing in /Users/monucarpenter/.vim/plugged/nerdtree/plugin/NERD_tree.vim
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/nerdtree_plugin)
+fchdir() to previous dir
+line 5: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/nerdtree_plugin/exec_menuitem.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/nerdtree_plugin/exec_menuitem.vim
+continuing in nerdtree#postSourceActions
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/nerdtree_plugin)
+fchdir() to previous dir
+line 5: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/nerdtree_plugin/fs_menu.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/nerdtree_plugin/fs_menu.vim
+continuing in nerdtree#postSourceActions
+chdir(/Users/monucarpenter/.vim/plugged/nerdtree/nerdtree_plugin)
+fchdir() to previous dir
+line 5: sourcing "/Users/monucarpenter/.vim/plugged/nerdtree/nerdtree_plugin/vcs.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/nerdtree_plugin/vcs.vim
+continuing in nerdtree#postSourceActions
+finished sourcing /Users/monucarpenter/.vim/plugged/nerdtree/plugin/NERD_tree.vim
+chdir(/usr/share/vim/vim90/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/plugin/getscriptPlugin.vim"
+finished sourcing /usr/share/vim/vim90/plugin/getscriptPlugin.vim
+chdir(/usr/share/vim/vim90/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/plugin/gzip.vim"
+finished sourcing /usr/share/vim/vim90/plugin/gzip.vim
+chdir(/usr/share/vim/vim90/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/plugin/logiPat.vim"
+finished sourcing /usr/share/vim/vim90/plugin/logiPat.vim
+chdir(/usr/share/vim/vim90/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/plugin/manpager.vim"
+finished sourcing /usr/share/vim/vim90/plugin/manpager.vim
+chdir(/usr/share/vim/vim90/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/plugin/matchparen.vim"
+finished sourcing /usr/share/vim/vim90/plugin/matchparen.vim
+chdir(/usr/share/vim/vim90/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/plugin/netrwPlugin.vim"
+finished sourcing /usr/share/vim/vim90/plugin/netrwPlugin.vim
+chdir(/usr/share/vim/vim90/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/plugin/rrhelper.vim"
+finished sourcing /usr/share/vim/vim90/plugin/rrhelper.vim
+chdir(/usr/share/vim/vim90/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/plugin/spellfile.vim"
+finished sourcing /usr/share/vim/vim90/plugin/spellfile.vim
+chdir(/usr/share/vim/vim90/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/plugin/tarPlugin.vim"
+finished sourcing /usr/share/vim/vim90/plugin/tarPlugin.vim
+chdir(/usr/share/vim/vim90/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/plugin/tohtml.vim"
+finished sourcing /usr/share/vim/vim90/plugin/tohtml.vim
+chdir(/usr/share/vim/vim90/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/plugin/vimballPlugin.vim"
+finished sourcing /usr/share/vim/vim90/plugin/vimballPlugin.vim
+chdir(/usr/share/vim/vim90/plugin)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/plugin/zipPlugin.vim"
+finished sourcing /usr/share/vim/vim90/plugin/zipPlugin.vim
+not found in 'packpath': "pack/*/start/*"
+not found in 'runtimepath': "plugin/**/*.vim"
+Reading viminfo file "/Users/monucarpenter/.viminfo" info oldfiles
+Executing BufWinEnter Autocommands for "*"
+autocommand call s:Autocmd('BufWinEnter', +expand('<abuf>'), win_getid())
+
+Executing BufWinEnter Autocommands for "*"
+autocommand call ale#events#LintOnEnter(str2nr(expand('<abuf>')))
+
+chdir(/Users/monucarpenter/.vim/plugged/ale/autoload)
+fchdir() to previous dir
+line 4: sourcing "/Users/monucarpenter/.vim/plugged/ale/autoload/ale.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/ale/autoload/ale.vim
+continuing in ale#events#LintOnEnter
+Executing BufWinEnter Autocommands for "*"
+autocommand call s:Highlight_Matching_Pair()
+
+Executing BufEnter Autocommands for "*"
+autocommand call s:Autocmd('BufEnter', +expand('<abuf>'))
+
+Executing BufEnter Autocommands for "*"
+autocommand call ale#events#ReadOrEnterEvent(str2nr(expand('<abuf>')))
+
+Executing BufEnter Autocommands for "*"
+autocommand call nerdtree#checkForBrowse(expand('<amatch>'))
+
+Executing BufEnter Autocommands for "*"
+autocommand sil call s:LocalBrowse(expand("<amatch>"))
+
+Executing VimEnter Autocommands for "*"
+autocommand if has("syntax") | syntax enable | endif
+
+chdir(/usr/share/vim/vim90/syntax)
+fchdir() to previous dir
+line 0: sourcing "/usr/share/vim/vim90/syntax/syntax.vim"
+chdir(/usr/share/vim/vim90/syntax)
+fchdir() to previous dir
+line 16: sourcing "/usr/share/vim/vim90/syntax/nosyntax.vim"
+Executing BufEnter Autocommands for "*"
+autocommand syn clear
+
+autocommand if exists("b:current_syntax") | unlet b:current_syntax | endif
+
+finished sourcing /usr/share/vim/vim90/syntax/nosyntax.vim
+continuing in /usr/share/vim/vim90/syntax/syntax.vim
+chdir(/usr/share/vim/vim90/syntax)
+fchdir() to previous dir
+line 20: sourcing "/usr/share/vim/vim90/syntax/synload.vim"
+chdir(/usr/share/vim/vim90/syntax)
+fchdir() to previous dir
+line 22: sourcing "/usr/share/vim/vim90/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vim90/syntax/syncolor.vim
+continuing in /usr/share/vim/vim90/syntax/synload.vim
+finished sourcing /usr/share/vim/vim90/syntax/synload.vim
+continuing in /usr/share/vim/vim90/syntax/syntax.vim
+Executing FileType Autocommands for "*"
+autocommand 0verbose exe "set syntax=" . expand("<amatch>")
+
+finished sourcing /usr/share/vim/vim90/syntax/syntax.vim
+continuing in VimEnter Autocommands for "*"
+Executing VimEnter Autocommands for "*"
+autocommand call s:VimEnter()
+
+chdir(/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc)
+fchdir() to previous dir
+line 1: sourcing "/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/highlight.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/highlight.vim
+continuing in <SNR>14_Highlight
+chdir(/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc)
+fchdir() to previous dir
+line 8: sourcing "/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/color.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/color.vim
+continuing in <SNR>55_to_hex_color
+Executing VimEnter Autocommands for "*"
+autocommand silent! autocmd! FileExplorer
+
+autocommand call nerdtree#checkForBrowse(expand('<amatch>'))
+
+Executing CursorMoved Autocommands for "*"
+autocommand call s:Autocmd('CursorMoved', +expand('<abuf>'), [line('.'), col('.')])
+
+Executing CursorMoved Autocommands for "*"
+autocommand if exists('*ale#engine#Cleanup') | call ale#cursor#EchoCursorWarningWithDelay() | endif
+
+Executing CursorMoved Autocommands for "*"
+autocommand call s:Highlight_Matching_Pair()
+
+SpecialKey     xxx term=bold ctermfg=4 guifg=Blue
+EndOfBuffer    xxx links to NonText
+NonText        xxx term=bold ctermfg=12 gui=bold guifg=Blue
+Directory      xxx term=bold ctermfg=4 guifg=Blue
+ErrorMsg       xxx term=standout ctermfg=15 ctermbg=1 guifg=White guibg=Red
+IncSearch      xxx term=reverse cterm=reverse gui=reverse
+Search         xxx term=reverse ctermbg=11 guibg=Yellow
+CurSearch      xxx links to Search
+MoreMsg        xxx term=bold ctermfg=2 gui=bold guifg=SeaGreen
+ModeMsg        xxx term=bold cterm=bold gui=bold
+LineNr         xxx term=underline ctermfg=130 guifg=Brown
+LineNrAbove    xxx cleared
+LineNrBelow    xxx cleared
+CursorLineNr   xxx term=bold cterm=underline ctermfg=130 gui=bold guifg=Brown
+CursorLineSign xxx links to SignColumn
+CursorLineFold xxx links to FoldColumn
+Question       xxx term=standout ctermfg=2 gui=bold guifg=SeaGreen
+StatusLine     xxx term=bold,reverse cterm=bold,reverse gui=bold,reverse
+StatusLineNC   xxx term=reverse cterm=reverse gui=reverse
+VertSplit      xxx term=reverse cterm=reverse gui=reverse
+Title          xxx term=bold ctermfg=5 gui=bold guifg=Magenta
+Visual         xxx term=reverse ctermbg=7 guibg=LightGrey
+VisualNOS      xxx term=bold,underline cterm=bold,underline gui=bold,underline
+WarningMsg     xxx term=standout ctermfg=1 guifg=Red
+WildMenu       xxx term=standout ctermfg=0 ctermbg=11 guifg=Black guibg=Yellow
+Folded         xxx term=standout ctermfg=4 ctermbg=248 guifg=DarkBlue guibg=LightGrey
+FoldColumn     xxx term=standout ctermfg=4 ctermbg=248 guifg=DarkBlue guibg=Grey
+DiffAdd        xxx term=bold ctermbg=81 guibg=LightBlue
+DiffChange     xxx term=bold ctermbg=225 guibg=LightMagenta
+DiffDelete     xxx term=bold ctermfg=12 ctermbg=159 gui=bold guifg=Blue guibg=LightCyan
+DiffText       xxx term=reverse cterm=bold ctermbg=9 gui=bold guibg=Red
+SignColumn     xxx term=standout ctermfg=4 ctermbg=248 guifg=DarkBlue guibg=Grey
+Conceal        xxx ctermfg=7 ctermbg=242 guifg=LightGrey guibg=DarkGrey
+SpellBad       xxx term=reverse ctermbg=224 gui=undercurl guisp=Red
+SpellCap       xxx term=reverse ctermbg=81 gui=undercurl guisp=Blue
+SpellRare      xxx term=reverse ctermbg=225 gui=undercurl guisp=Magenta
+SpellLocal     xxx term=underline ctermbg=14 gui=undercurl guisp=DarkCyan
+Pmenu          xxx ctermfg=0 ctermbg=225 guibg=LightMagenta
+PmenuSel       xxx ctermfg=0 ctermbg=7 guibg=Grey
+PmenuKind      xxx links to Pmenu
+PmenuKindSel   xxx links to PmenuSel
+PmenuExtra     xxx links to Pmenu
+PmenuExtraSel  xxx links to PmenuSel
+PmenuSbar      xxx ctermbg=248 guibg=Grey
+PmenuThumb     xxx ctermbg=0 guibg=Black
+TabLine        xxx term=underline cterm=underline ctermfg=0 ctermbg=7 gui=underline guibg=LightGrey
+TabLineSel     xxx term=bold cterm=bold gui=bold
+TabLineFill    xxx term=reverse cterm=reverse gui=reverse
+CursorColumn   xxx term=reverse ctermbg=7 guibg=Grey90
+CursorLine     xxx term=underline cterm=underline guibg=Grey90
+ColorColumn    xxx term=reverse ctermbg=224 guibg=LightRed
+QuickFixLine   xxx links to Search
+StatusLineTerm xxx term=bold,reverse cterm=bold ctermfg=15 ctermbg=2 gui=bold guifg=bg guibg=DarkGreen
+StatusLineTermNC xxx term=reverse ctermfg=15 ctermbg=2 guifg=bg guibg=DarkGreen
+Normal         xxx cleared
+MatchParen     xxx term=reverse ctermbg=14 guibg=Cyan
+ToolbarLine    xxx term=underline ctermbg=7 guibg=LightGrey
+ToolbarButton  xxx cterm=bold ctermfg=15 ctermbg=242 gui=bold guifg=White guibg=Grey40
+Comment        xxx term=bold ctermfg=4 guifg=Blue
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 45
+Constant       xxx term=underline ctermfg=1 guifg=Magenta
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 46
+Special        xxx term=bold ctermfg=5 guifg=#6a5acd
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 48
+Identifier     xxx term=underline ctermfg=6 guifg=DarkCyan
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 49
+Statement      xxx term=bold ctermfg=130 gui=bold guifg=Brown
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 50
+PreProc        xxx term=underline ctermfg=5 guifg=#6a0dad
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 52
+Type           xxx term=underline ctermfg=2 gui=bold guifg=SeaGreen
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 53
+Underlined     xxx term=underline cterm=underline ctermfg=5 gui=underline guifg=SlateBlue
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 54
+Ignore         xxx ctermfg=15 guifg=bg
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 55
+Error          xxx term=reverse ctermfg=15 ctermbg=9 guifg=White guibg=Red
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 57
+Todo           xxx term=standout ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 58
+String         xxx links to Constant
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 62
+Character      xxx links to Constant
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 63
+Number         xxx links to Constant
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 64
+Boolean        xxx links to Constant
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 65
+Float          xxx links to Number
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 66
+Function       xxx links to Identifier
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 67
+Conditional    xxx links to Statement
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 68
+Repeat         xxx links to Statement
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 69
+Label          xxx links to Statement
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 70
+Operator       xxx links to Statement
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 71
+Keyword        xxx links to Statement
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 72
+Exception      xxx links to Statement
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 73
+Include        xxx links to PreProc
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 74
+Define         xxx links to PreProc
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 75
+Macro          xxx links to PreProc
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 76
+PreCondit      xxx links to PreProc
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 77
+StorageClass   xxx links to Type
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 78
+Structure      xxx links to Type
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 79
+Typedef        xxx links to Type
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 80
+Tag            xxx links to Special
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 81
+SpecialChar    xxx links to Special
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 82
+Delimiter      xxx links to Special
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 83
+SpecialComment xxx links to Special
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 84
+Debug          xxx links to Special
+	Last set from /usr/share/vim/vim90/syntax/syncolor.vim line 85
+CocSelectedText xxx ctermfg=9 guifg=#fb4934
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 427
+CocCodeLens    xxx ctermfg=248 guifg=#999999
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 428
+CocUnderline   xxx term=underline cterm=underline gui=underline guisp=#ebdbb2
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 429
+CocBold        xxx term=bold cterm=bold gui=bold
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 430
+CocItalic      xxx term=italic cterm=italic gui=italic
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 431
+CocStrikeThrough xxx term=strikethrough cterm=strikethrough gui=strikethrough
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 432
+CocMarkdownLink xxx ctermfg=12 guifg=#15aabf
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 433
+CocDisabled    xxx ctermfg=248 guifg=#999999
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 434
+CocSearch      xxx ctermfg=12 guifg=#15aabf
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 435
+CocLink        xxx term=underline cterm=underline gui=underline guisp=#15aabf
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 436
+CocFloatActive xxx links to CocSearch
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 437
+CocFadeOut     xxx links to Conceal
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 438
+CocMarkdownCode xxx links to markdownCode
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 439
+markdownCode   xxx cleared
+CocMarkdownHeader xxx links to markdownH1
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 440
+markdownH1     xxx cleared
+CocDeprecatedHighlight xxx links to CocStrikeThrough
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 441
+CocUnusedHighlight xxx links to CocFadeOut
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 442
+CocListSearch  xxx links to CocSearch
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 443
+CocListMode    xxx links to ModeMsg
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 444
+CocListPath    xxx links to Comment
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 445
+CocHighlightText xxx links to CursorColumn
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 446
+CocHoverRange  xxx links to Search
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 447
+CocCursorRange xxx links to Search
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 448
+CocLinkedEditing xxx links to CocCursorRange
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 449
+CocHighlightRead xxx links to CocHighlightText
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 450
+CocHighlightWrite xxx links to CocHighlightText
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 451
+CocNotificationProgress xxx ctermfg=12 guifg=#15aabf
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 453
+CocNotificationButton xxx links to CocUnderline
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 454
+CocNotificationError xxx links to CocErrorFloat
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 455
+CocErrorFloat  xxx ctermfg=9 ctermbg=253 guifg=#ff0000 guibg=#e0e0e0
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 231
+CocNotificationWarning xxx links to CocWarningFloat
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 456
+CocWarningFloat xxx ctermfg=130 ctermbg=253 guifg=#ff922b guibg=#e0e0e0
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 231
+CocNotificationInfo xxx links to CocInfoFloat
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 457
+CocInfoFloat   xxx ctermfg=11 ctermbg=253 guifg=#fab005 guibg=#e0e0e0
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 231
+CocSnippetVisual xxx links to Visual
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 459
+CocTreeTitle   xxx links to Title
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 461
+CocTreeDescription xxx links to Comment
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 462
+CocTreeOpenClose xxx links to CocBold
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 463
+CocTreeSelected xxx links to CursorLine
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 464
+CocSelectedRange xxx links to CocHighlightText
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 465
+CocSymbolDefault xxx links to MoreMsg
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 467
+CocPumSearch   xxx links to CocSearch
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 469
+CocPumDetail   xxx links to Comment
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 470
+CocPumMenu     xxx links to CocFloating
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 471
+CocFloating    xxx ctermbg=253 guibg=#e0e0e0
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 485
+CocPumShortcut xxx links to Comment
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 472
+CocPumDeprecated xxx links to CocStrikeThrough
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 473
+CocVirtualText xxx ctermfg=12 guifg=#504945
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 474
+CocPumVirtualText xxx links to CocVirtualText
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 475
+CocInputBoxVirtualText xxx links to CocVirtualText
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 476
+CocFloatDividingLine xxx links to CocVirtualText
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 477
+CocListBlackBlack xxx guifg=#282828 guibg=#282828
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlackBlue xxx guifg=#282828 guibg=#458588
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlackGreen xxx guifg=#282828 guibg=#98971a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlackGrey xxx guifg=#282828 guibg=#928374
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlackWhite xxx guifg=#282828 guibg=#a89984
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlackCyan xxx guifg=#282828 guibg=#689d6a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlackYellow xxx guifg=#282828 guibg=#d79921
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlackMagenta xxx guifg=#282828 guibg=#b16286
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlackRed xxx guifg=#282828 guibg=#cc241d
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListFgBlack xxx ctermfg=0 guifg=#282828
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 220
+CocListBgBlack xxx ctermbg=0 guibg=#282828
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 221
+CocListBlueBlack xxx guifg=#458588 guibg=#282828
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlueBlue xxx guifg=#458588 guibg=#458588
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlueGreen xxx guifg=#458588 guibg=#98971a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlueGrey xxx guifg=#458588 guibg=#928374
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlueWhite xxx guifg=#458588 guibg=#a89984
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlueCyan xxx guifg=#458588 guibg=#689d6a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlueYellow xxx guifg=#458588 guibg=#d79921
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlueMagenta xxx guifg=#458588 guibg=#b16286
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListBlueRed xxx guifg=#458588 guibg=#cc241d
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListFgBlue  xxx ctermfg=12 guifg=#458588
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 220
+CocListBgBlue  xxx ctermbg=12 guibg=#458588
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 221
+CocListGreenBlack xxx guifg=#98971a guibg=#282828
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreenBlue xxx guifg=#98971a guibg=#458588
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreenGreen xxx guifg=#98971a guibg=#98971a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreenGrey xxx guifg=#98971a guibg=#928374
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreenWhite xxx guifg=#98971a guibg=#a89984
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreenCyan xxx guifg=#98971a guibg=#689d6a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreenYellow xxx guifg=#98971a guibg=#d79921
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreenMagenta xxx guifg=#98971a guibg=#b16286
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreenRed xxx guifg=#98971a guibg=#cc241d
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListFgGreen xxx ctermfg=10 guifg=#98971a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 220
+CocListBgGreen xxx ctermbg=10 guibg=#98971a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 221
+CocListGreyBlack xxx guifg=#928374 guibg=#282828
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreyBlue xxx guifg=#928374 guibg=#458588
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreyGreen xxx guifg=#928374 guibg=#98971a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreyGrey xxx guifg=#928374 guibg=#928374
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreyWhite xxx guifg=#928374 guibg=#a89984
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreyCyan xxx guifg=#928374 guibg=#689d6a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreyYellow xxx guifg=#928374 guibg=#d79921
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreyMagenta xxx guifg=#928374 guibg=#b16286
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListGreyRed xxx guifg=#928374 guibg=#cc241d
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListFgGrey  xxx ctermfg=248 guifg=#928374
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 220
+CocListBgGrey  xxx ctermbg=248 guibg=#928374
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 221
+CocListWhiteBlack xxx guifg=#a89984 guibg=#282828
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListWhiteBlue xxx guifg=#a89984 guibg=#458588
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListWhiteGreen xxx guifg=#a89984 guibg=#98971a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListWhiteGrey xxx guifg=#a89984 guibg=#928374
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListWhiteWhite xxx guifg=#a89984 guibg=#a89984
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListWhiteCyan xxx guifg=#a89984 guibg=#689d6a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListWhiteYellow xxx guifg=#a89984 guibg=#d79921
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListWhiteMagenta xxx guifg=#a89984 guibg=#b16286
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListWhiteRed xxx guifg=#a89984 guibg=#cc241d
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListFgWhite xxx ctermfg=15 guifg=#a89984
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 220
+CocListBgWhite xxx ctermbg=15 guibg=#a89984
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 221
+CocListCyanBlack xxx guifg=#689d6a guibg=#282828
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListCyanBlue xxx guifg=#689d6a guibg=#458588
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListCyanGreen xxx guifg=#689d6a guibg=#98971a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListCyanGrey xxx guifg=#689d6a guibg=#928374
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListCyanWhite xxx guifg=#689d6a guibg=#a89984
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListCyanCyan xxx guifg=#689d6a guibg=#689d6a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListCyanYellow xxx guifg=#689d6a guibg=#d79921
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListCyanMagenta xxx guifg=#689d6a guibg=#b16286
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListCyanRed xxx guifg=#689d6a guibg=#cc241d
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListFgCyan  xxx ctermfg=14 guifg=#689d6a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 220
+CocListBgCyan  xxx ctermbg=14 guibg=#689d6a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 221
+CocListYellowBlack xxx guifg=#d79921 guibg=#282828
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListYellowBlue xxx guifg=#d79921 guibg=#458588
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListYellowGreen xxx guifg=#d79921 guibg=#98971a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListYellowGrey xxx guifg=#d79921 guibg=#928374
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListYellowWhite xxx guifg=#d79921 guibg=#a89984
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListYellowCyan xxx guifg=#d79921 guibg=#689d6a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListYellowYellow xxx guifg=#d79921 guibg=#d79921
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListYellowMagenta xxx guifg=#d79921 guibg=#b16286
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListYellowRed xxx guifg=#d79921 guibg=#cc241d
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListFgYellow xxx ctermfg=11 guifg=#d79921
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 220
+CocListBgYellow xxx ctermbg=11 guibg=#d79921
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 221
+CocListMagentaBlack xxx guifg=#b16286 guibg=#282828
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListMagentaBlue xxx guifg=#b16286 guibg=#458588
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListMagentaGreen xxx guifg=#b16286 guibg=#98971a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListMagentaGrey xxx guifg=#b16286 guibg=#928374
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListMagentaWhite xxx guifg=#b16286 guibg=#a89984
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListMagentaCyan xxx guifg=#b16286 guibg=#689d6a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListMagentaYellow xxx guifg=#b16286 guibg=#d79921
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListMagentaMagenta xxx guifg=#b16286 guibg=#b16286
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListMagentaRed xxx guifg=#b16286 guibg=#cc241d
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListFgMagenta xxx ctermfg=13 guifg=#b16286
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 220
+CocListBgMagenta xxx ctermbg=13 guibg=#b16286
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 221
+CocListRedBlack xxx guifg=#cc241d guibg=#282828
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListRedBlue xxx guifg=#cc241d guibg=#458588
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListRedGreen xxx guifg=#cc241d guibg=#98971a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListRedGrey xxx guifg=#cc241d guibg=#928374
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListRedWhite xxx guifg=#cc241d guibg=#a89984
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListRedCyan xxx guifg=#cc241d guibg=#689d6a
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListRedYellow xxx guifg=#cc241d guibg=#d79921
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListRedMagenta xxx guifg=#cc241d guibg=#b16286
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListRedRed  xxx guifg=#cc241d guibg=#cc241d
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 218
+CocListFgRed   xxx ctermfg=9 guifg=#cc241d
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 220
+CocListBgRed   xxx ctermbg=9 guibg=#cc241d
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 221
+CocMenuSel     xxx ctermbg=250 guibg=#c8c8c8
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 486
+CocListLine    xxx ctermbg=254 guibg=#eaeaea
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 501
+CocSelectedLine xxx cleared
+CocFloatThumb  xxx ctermbg=249 guibg=#b7b7b7
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 487
+CocFloatSbar   xxx links to CocFloating
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 488
+CocErrorHighlight xxx links to CocUnderline
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 521
+CocErrorSign   xxx ctermfg=9 guifg=#ff0000
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 526
+CocErrorVirtualText xxx ctermfg=9 guifg=#ff0000
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 231
+CocWarningHighlight xxx links to CocUnderline
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 521
+CocWarningSign xxx ctermfg=130 guifg=#ff922b
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 526
+CocWarningVirtualText xxx ctermfg=130 guifg=#ff922b
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 231
+CocInfoHighlight xxx links to CocUnderline
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 521
+CocInfoSign    xxx ctermfg=11 guifg=#fab005
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 526
+CocInfoVirtualText xxx ctermfg=11 guifg=#fab005
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 231
+CocHintHighlight xxx links to CocUnderline
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 521
+CocHintSign    xxx ctermfg=12 guifg=#15aabf
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 526
+CocHintVirtualText xxx ctermfg=12 guifg=#15aabf
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 231
+CocHintFloat   xxx ctermfg=12 ctermbg=253 guifg=#15aabf guibg=#e0e0e0
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 231
+CocInlayHint   xxx ctermfg=12 ctermbg=248 guifg=#15aabf guibg=Grey
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 231
+CocInlayHintParameter xxx links to CocInlayHint
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 542
+CocInlayHintType xxx links to CocInlayHint
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 542
+CocSemTypeMacro xxx links to Define
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeEnumMember xxx links to Constant
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeComment xxx links to Comment
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeOperator xxx links to Operator
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeProperty xxx links to Identifier
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeClass xxx links to Special
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeStruct xxx links to Identifier
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeRegexp xxx links to String
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeBoolean xxx links to Boolean
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeMethod xxx links to Function
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeNamespace xxx links to Include
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeModifier xxx links to StorageClass
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeNumber xxx links to Number
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeTypeParameter xxx links to Identifier
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeKeyword xxx links to Keyword
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemModDeprecated xxx links to CocDeprecatedHighlight
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeFunction xxx links to Function
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeDecorator xxx links to Identifier
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeEnum xxx links to Type
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeParameter xxx links to Identifier
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeType xxx links to Type
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeString xxx links to String
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeVariable xxx links to Identifier
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeInterface xxx links to Type
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSemTypeEvent xxx links to Keyword
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 576
+CocSymbolUnit  xxx ctermfg=2 guifg=SeaGreen
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolNumber xxx ctermfg=1 guifg=Magenta
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolFunction xxx ctermfg=6 guifg=DarkCyan
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolKey   xxx ctermfg=6 guifg=DarkCyan
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolKeyword xxx ctermfg=130 guifg=Brown
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolReference xxx ctermfg=1 guifg=Magenta
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolFolder xxx ctermfg=2 guifg=SeaGreen
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolVariable xxx ctermfg=5 guifg=#6a5acd
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolNull  xxx ctermfg=2 guifg=SeaGreen
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolValue xxx ctermfg=2 guifg=SeaGreen
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolConstant xxx ctermfg=1 guifg=Magenta
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolText  xxx ctermfg=2 guifg=SeaGreen
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolModule xxx ctermfg=130 guifg=Brown
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolPackage xxx ctermfg=130 guifg=Brown
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolClass xxx ctermfg=5 guifg=#6a5acd
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolOperator xxx ctermfg=130 guifg=Brown
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolStruct xxx ctermfg=130 guifg=Brown
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolObject xxx ctermfg=2 guifg=SeaGreen
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolMethod xxx ctermfg=6 guifg=DarkCyan
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolArray xxx ctermfg=2 guifg=SeaGreen
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolEnum  xxx ctermfg=2 guifg=SeaGreen
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolField xxx ctermfg=6 guifg=DarkCyan
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolInterface xxx ctermfg=2 guifg=SeaGreen
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolProperty xxx ctermfg=6 guifg=DarkCyan
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolColor xxx ctermfg=1 guifg=Magenta
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolFile  xxx ctermfg=130 guifg=Brown
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolEvent xxx ctermfg=1 guifg=Magenta
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolTypeParameter xxx ctermfg=6 guifg=DarkCyan
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolConstructor xxx ctermfg=5 guifg=#6a5acd
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolSnippet xxx ctermfg=2 guifg=SeaGreen
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolBoolean xxx ctermfg=1 guifg=Magenta
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolNamespace xxx ctermfg=5 guifg=#6a0dad
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolString xxx ctermfg=1 guifg=Magenta
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+CocSymbolEnumMember xxx ctermfg=6 guifg=DarkCyan
+	Last set from ~/.vim/plugged/coc.nvim/plugin/coc.vim line 618
+chdir(/usr/share/vim/vim90/syntax)
+fchdir() to previous dir
+sourcing "/usr/share/vim/vim90/syntax/syncolor.vim"
+finished sourcing /usr/share/vim/vim90/syntax/syncolor.vim
+chdir(/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc)
+fchdir() to previous dir
+line 3: sourcing "/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/window.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/window.vim
+continuing in coc#util#editor_infos
+chdir(/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc)
+fchdir() to previous dir
+line 1: sourcing "/Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/ui.vim"
+finished sourcing /Users/monucarpenter/.vim/plugged/coc.nvim/autoload/coc/ui.vim
+continuing in 14
+
+E32: No file name
+
+Executing QuitPre Autocommands for "*"
+autocommand call ale#events#QuitEvent(str2nr(expand('<abuf>')))
+
+Executing BufWinLeave Autocommands for "*"
+autocommand call s:Autocmd('BufWinLeave', +expand('<abuf>'), bufwinid(+expand('<abuf>')))
+
+Executing BufUnload Autocommands for "*"
+autocommand call s:Autocmd('BufUnload', +expand('<abuf>'))
+
+Executing VimLeavePre Autocommands for "*"
+autocommand call s:VimLeavePre()
+
+Writing viminfo file "/Users/monucarpenter/.viminfo"

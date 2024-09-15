@@ -1,5 +1,0 @@
-YES 
-AABBAA 
-NO 
-YES 
-AA
