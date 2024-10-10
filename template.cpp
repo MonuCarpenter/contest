@@ -4,7 +4,6 @@
  */
 
 #include <bits/stdc++.h>
-#define _for(n) for (int i = 0; i < n; i++)
 
 using i64 = long long;
 using u64 = unsigned long long;
