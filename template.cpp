@@ -10,14 +10,14 @@ using u64 = unsigned long long;
 using u32 = unsigned;
 
 #ifndef ONLINE_JUDGE
-#include "./cpp-dump.hpp"
-#define dump(...) cpp_dump(__VA_ARGS__)
+#include "./cpp-dump/cpp-dump.hpp"
+#define log(...) cpp_dump(__VA_ARGS__)
 template <>
 inline void cpp_dump::write_log(std::string_view output) {
-    std::cout << out / put << '\n';
+    std::cout << output << '\n';
 }
 #else
-#define dump(...)
+#define log(...)
 #define CPP_DUMP_SET_OPTION(...)
 #define CPP_DUMP_DEFINE_EXPORT_OBJECT(...)
 #define CPP_DUMP_DEFINE_EXPORT_OBJECT_GENERIC(...)
