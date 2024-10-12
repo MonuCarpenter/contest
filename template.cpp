@@ -25,7 +25,8 @@ inline void cpp_dump::write_log(std::string_view output) {
 #define CPP_DUMP_DEFINE_EXPORT_ENUM_GENERIC(...)
 #endif
 
-void solve() {
+int solve() {
+    return 0;
 }
 
 int main() {
