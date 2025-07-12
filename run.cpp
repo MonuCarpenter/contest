@@ -81,7 +81,7 @@ void display_loader(std::atomic<bool>& loading) {
 
 void run_tests(const fs::path& folder) {
     // Compile the C++ program
-    std::string compile_command = "g++-14 -std=c++20 -o " + folder.string() + "/code " + folder.string() + "/code.cpp";
+    std::string compile_command = "g++-15 -std=c++20 -o " + folder.string() + "/code " + folder.string() + "/code.cpp";
     int compile_status = std::system(compile_command.c_str());
 
     if (compile_status != 0) {
