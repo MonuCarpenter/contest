@@ -25,19 +25,26 @@ namespace cpp_dump {
 
 namespace _detail {
 
+namespace _export_arithmetic {
+
 inline std::string export_arithmetic(
-    bool value, const std::string &, std::size_t, std::size_t, bool, const export_command &command
+    bool bool_value,
+    const std::string &,
+    std::size_t,
+    std::size_t,
+    bool,
+    const export_command &command
 ) {
   using bool_style_t = export_command::bool_style_t;
   switch (command.bool_style()) {
     case bool_style_t::normal:
-      return es::reserved(value ? "true" : "false");
+      return es::reserved(bool_value ? "true" : "false");
     case bool_style_t::true_left:
-      return es::reserved(value ? "true " : "false");
+      return es::reserved(bool_value ? "true " : "false");
     case bool_style_t::true_right:
-      return es::reserved(value ? " true" : "false");
+      return es::reserved(bool_value ? " true" : "false");
     default:
-      return es::number(value ? "1" : "0");
+      return es::number(bool_value ? "1" : "0");
   }
 }
 
@@ -56,50 +63,66 @@ inline auto export_arithmetic(
 }
 
 inline std::string export_arithmetic(
-    char value, const std::string &, std::size_t, std::size_t, bool, const export_command &command
+    char char_value,
+    const std::string &,
+    std::size_t,
+    std::size_t,
+    bool,
+    const export_command &command
 ) {
-  const bool is_printable = std::isprint(static_cast<unsigned char>(value));
-  const bool need_escape = !is_printable || value == '\'' || value == '\\';
+  const bool is_printable = std::isprint(static_cast<unsigned char>(char_value));
+  const bool need_escape = !is_printable || char_value == '\'' || char_value == '\\';
 
-  std::string char_str_es;
+  std::string output;
+  // Escape if needed.
   if (need_escape) {
-    auto escaped = is_printable ? std::string({'\\', value}) : escape_non_printable_char(value);
-
-    if (command.char_as_hex() && escaped.size() > 2) {
-      char_str_es = std::string(4, ' ');
+    auto escaped_char =
+        is_printable ? std::string({'\\', char_value}) : escape_non_printable_char(char_value);
+    if (command.char_as_hex() && escaped_char.size() > 2) {
+      output = std::string(4, ' ');
     } else {
-      char_str_es = es::character("'") + es::escaped_char(escaped) + es::character("'");
+      output = es::character("'") + es::escaped_char(escaped_char) + es::character("'");
     }
   } else {
-    char quoted_char[] = {'\'', value, '\''};
-    char_str_es = es::character({quoted_char, sizeof(quoted_char)});
+    char quoted_char[] = {'\'', char_value, '\''};
+    output = es::character({quoted_char, sizeof(quoted_char)});
+  }
+  if (!command.char_as_hex()) {
+    return output;
   }
 
-  if (!command.char_as_hex()) return char_str_es;
+  // The hex value is needed.
 
-  if (!need_escape) char_str_es.push_back(' ');
+  // If the value is not escaped, add space before the hex value.
+  if (!need_escape) {
+    output.push_back(' ');
+  }
 
+  // Add the hex value.
   auto to_hex_char = [](unsigned char c) -> char {
     return static_cast<char>(c < 10 ? '0' + c : 'A' + (c - 10));
   };
-  char upper = to_hex_char((value >> 4) & 0x0f);
-  char lower = to_hex_char(value & 0x0f);
-
+  char upper = to_hex_char((char_value >> 4) & 0x0f);
+  char lower = to_hex_char(char_value & 0x0f);
   char number[] = {'0', 'x', upper, lower};
-  return char_str_es + es::number({number, sizeof(number)});
+  output.append(es::number({number, sizeof(number)}));
+
+  return output;
 }
 
+// helper for _get_max_digits
 template <typename UnsignedT>
 constexpr unsigned int _get_max_digits_aux(UnsignedT num, unsigned int base) {
   return num == 0 ? 0 : 1 + _get_max_digits_aux(num / base, base);
 }
 
+// helper for export_arithmetic(T)
+// Get the maximum digits of the T with base as the radix.
 template <typename T>
 unsigned int _get_max_digits(unsigned int base) {
   using UnsignedT = std::make_unsigned_t<T>;
   constexpr UnsignedT T_max =
       std::max<UnsignedT>(std::numeric_limits<T>::max(), std::numeric_limits<T>::min());
-
   switch (base) {
     case 2: {
       constexpr unsigned int max_digits = _get_max_digits_aux(T_max, 2);
@@ -120,115 +143,147 @@ unsigned int _get_max_digits(unsigned int base) {
   }
 }
 
+// helper for export_arithmetic(T)
+// Convert the absolute integer to a reversed string.
+template <typename T, typename UnsignedTOrInt>
+std::string _abs_to_reversed_str(UnsignedTOrInt abs, unsigned int base) {
+  std::string reversed;
+  if (base == 10) {
+    reversed = std::to_string(abs);
+    std::reverse(reversed.begin(), reversed.end());
+  } else if (base == 2) {
+    // +3 is for the prefix.
+    reversed.reserve(sizeof(T) * 8 + 3);
+    bool is_first = true;
+    while (is_first || abs) {
+      is_first = false;
+      char next_digit = static_cast<char>((abs & 0x01) + '0');
+      reversed.push_back(next_digit);
+      abs >>= 1;
+    }
+  } else {
+    std::stringstream ss;
+    ss << std::setbase(base) << std::uppercase << abs;
+    reversed = ss.str();
+    std::reverse(reversed.begin(), reversed.end());
+  }
+  return reversed;
+}
+
+// helper for export_arithmetic(T)
+// Add spaces between chunks.
+inline std::string _chunk_string(std::string_view input, int base, int chunk) {
+  std::string output;
+  output.reserve(input.size() * 2);
+  for (std::size_t pos = 0; pos < input.size(); pos += chunk) {
+    output.append(input, pos, chunk);
+    output.push_back(' ');
+  }
+  if (base == 10) {
+    output.pop_back();
+  }
+  return output;
+}
+
+// helper for export_arithmetic(T)
+inline const char *_get_reversed_prefix(int base) {
+  // base == 10 is handled before this function.
+  if (base == 2) {
+    return "b0";
+  } else if (base == 8) {
+    return "o0";
+  } else {
+    return "x0";
+  }
+}
+
 template <typename T>
 inline auto export_arithmetic(
     T value, const std::string &, std::size_t, std::size_t, bool, const export_command &command
 ) -> std::enable_if_t<std::is_integral_v<T>, std::string> {
   auto int_style_ = command.int_style();
+  // If int_style is not specified, export with no style.
   if (!int_style_) {
     std::string output = command.format(value);
-    if (!output.empty()) return es::signed_number(output);
-
-    return es::signed_number(std::to_string(value));
+    if (output.empty()) {
+      return es::signed_number(std::to_string(value));
+    }
+    return es::signed_number(output);
   }
 
   auto [base, digits, chunk, space_fill, make_unsigned_or_no_space_for_minus] = int_style_.value();
+  // If base is 10 and the other values are not specified, export with no style.
+  if (base == 10 && digits == 0 && chunk == 0) {
+    return es::signed_number(std::to_string(value));
+  }
 
-  if (base == 10 && digits == 0 && chunk == 0) return es::signed_number(std::to_string(value));
+  // Style the integer with int_style.
 
+  // Declare variables.
   unsigned int max_digits = _get_max_digits<T>(base);
-  if (digits > max_digits) digits = max_digits;
-  if (chunk > max_digits) chunk = 0;
-
+  if (digits > max_digits) {
+    digits = max_digits;
+  }
+  if (chunk > max_digits) {
+    chunk = 0;
+  }
   const bool make_unsigned =
       std::is_signed_v<T> && base != 10 && make_unsigned_or_no_space_for_minus;
   const bool add_extra_space = !(std::is_unsigned_v<T> || make_unsigned_or_no_space_for_minus);
-
   using UnsignedT = std::make_unsigned_t<T>;
   // Let stringstream recognize the type as an integer.
   using UnsignedTOrInt =
       std::conditional_t<(sizeof(UnsignedT) > sizeof(unsigned int)), UnsignedT, unsigned int>;
-
-  UnsignedTOrInt unsigned_tmp;
+  UnsignedTOrInt abs;
   if constexpr (std::is_signed_v<T>) {
-    unsigned_tmp = static_cast<UnsignedTOrInt>(
+    abs = static_cast<UnsignedTOrInt>(
         make_unsigned ? static_cast<UnsignedT>(value) : std::abs(value)
     );
   } else {
-    unsigned_tmp = value;
+    abs = value;
   }
 
-  std::string output;
-  std::string_view reversed_prefix;
+  // Create a (reversed) string of the abs with base as the radix
+  std::string output = _abs_to_reversed_str<T, UnsignedTOrInt>(abs, base);
 
-  // Create a string of an integer with base as the radix
-  if (base == 10) {
-    output = std::to_string(unsigned_tmp);
-    std::reverse(output.begin(), output.end());
-  } else if (base == 2) {
-    output.reserve(sizeof(T) * 8 + 3);
-
-    bool is_first = true;
-    while (is_first || unsigned_tmp) {
-      is_first = false;
-      char next_digit = static_cast<char>((unsigned_tmp & 0x01) + '0');
-      output.push_back(next_digit);
-      unsigned_tmp >>= 1;
-    }
-
-    reversed_prefix = "b0";
-  } else {
-    std::stringstream ss;
-    ss << std::setbase(base) << std::uppercase << unsigned_tmp;
-    output = ss.str();
-    std::reverse(output.begin(), output.end());
-
-    reversed_prefix = base == 16 ? "x0" : "o0";
-  }
-
-  // Add a minus when value < 0 (part 1)
+  // Add a minus before filling when needed
   const bool need_minus = !make_unsigned && value < 0;
   const bool minus_before_fill = base == 10 && space_fill;
-  if (need_minus && minus_before_fill) output.push_back('-');
+  if (need_minus && minus_before_fill) {
+    output.push_back('-');
+  }
 
+  // Fill with spaces/zeros to make the length `digits`
   if (output.size() < digits) {
-    // Fill with spaces/zeros
-    if (space_fill) {
-      output.append(digits - output.size(), ' ');
-    } else {
-      output.append(digits - output.size(), '0');
-    }
+    output.append(digits - output.size(), space_fill ? ' ' : '0');
   }
 
   const bool length_was_below_digits = output.size() <= digits;
+  // Add a space between chunks
   if (chunk > 0) {
-    // Add a space between chunks
-    std::string new_output;
-    new_output.reserve(output.size() * 2);
-
-    for (std::size_t pos = 0; pos < output.size(); pos += chunk) {
-      new_output.append(output, pos, chunk);
-      new_output.push_back(' ');
-    }
-    if (base == 10) new_output.pop_back();
-
-    output.swap(new_output);
+    output = _chunk_string(output, base, chunk);
   }
 
-  output.append(reversed_prefix);
+  // Add prefix.
+  if (base != 10) {
+    output.append(_get_reversed_prefix(base));
+  }
 
-  // Add a minus when value < 0 (part 2)
+  // Add a minus after filling when needed
   if (need_minus && !minus_before_fill) {
     output.push_back('-');
   } else if (length_was_below_digits && add_extra_space) {
     output.push_back(' ');
   }
 
+  // Reverse the output and add color and suffix.
   std::reverse(output.begin(), output.end());
+  output = es::signed_number(output);
+  if (make_unsigned) {
+    output.append(es::op(" u"));
+  }
 
-  if (make_unsigned) return es::signed_number(output) + es::op(" u");
-
-  return es::signed_number(output);
+  return output;
 }
 
 template <typename T>
@@ -236,10 +291,15 @@ inline auto export_arithmetic(
     T value, const std::string &, std::size_t, std::size_t, bool, const export_command &command
 ) -> std::enable_if_t<std::is_floating_point_v<T>, std::string> {
   std::string output = command.format(value);
-  if (!output.empty()) return es::signed_number(output);
-
-  return es::signed_number(std::to_string(value));
+  if (output.empty()) {
+    return es::signed_number(std::to_string(value));
+  }
+  return es::signed_number(output);
 }
+
+}  // namespace _export_arithmetic
+
+using _export_arithmetic::export_arithmetic;
 
 }  // namespace _detail
 

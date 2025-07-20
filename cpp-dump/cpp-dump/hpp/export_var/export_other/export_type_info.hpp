@@ -22,6 +22,8 @@ namespace cpp_dump {
 
 namespace _detail {
 
+namespace _export_other {
+
 template <typename T>
 inline auto export_type_info(
     const T &type_info,
@@ -43,7 +45,10 @@ inline auto export_type_info(
 
   _p_CPP_DUMP_DEFINE_EXPORT_OBJECT_COMMON1;
 
-  if (shift_indent) output += "\n" + new_indent;
+  if (shift_indent) {
+    output += "\n" + new_indent;
+  }
+
   output += es::class_member("name()") + es::op("= ");
   output += es::class_op(R"(")") + es::type_name(name) + es::class_op(R"(")");
 
@@ -52,6 +57,8 @@ inline auto export_type_info(
 
   _p_CPP_DUMP_DEFINE_EXPORT_OBJECT_COMMON2;
 }
+
+}  // namespace _export_other
 
 }  // namespace _detail
 

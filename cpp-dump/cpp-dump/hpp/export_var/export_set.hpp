@@ -22,6 +22,8 @@ namespace cpp_dump {
 
 namespace _detail {
 
+namespace _export_set {
+
 template <typename T>
 struct _set_dummy_wrapper {
  public:
@@ -73,14 +75,18 @@ inline auto export_set(
     bool fail_on_newline,
     const export_command &command
 ) -> std::enable_if_t<is_set<T>, std::string> {
-  if (set.empty()) return es::bracket("{ }", current_depth);
-
-  if (current_depth >= options::max_depth)
+  // In case the container is empty.
+  if (set.empty()) {
+    return es::bracket("{ }", current_depth);
+  }
+  // In case the depth exceeds max_depth.
+  if (current_depth >= options::max_depth) {
     return es::bracket("{ ", current_depth) + es::op("...") + es::bracket(" }", current_depth);
+  }
 
+  // Declare variables.
   std::size_t next_depth = current_depth + 1;
   const auto &next_command = command.next();
-
   auto set_wrapper = ([&]() {
     if constexpr (is_multiset<T>) {
       return _multiset_wrapper(set);
@@ -90,58 +96,56 @@ inline auto export_set(
     }
   })();
   auto skipped_set = command.create_skip_container(set_wrapper);
-
-  bool shift_indent;
+  bool shift_indent = false;
   if (options::cont_indent_style == types::cont_indent_style_t::always) {
     shift_indent = true;
   } else if (options::cont_indent_style == types::cont_indent_style_t::when_nested) {
     shift_indent = is_iterable_like<iterable_elem_type<T>>;
   } else if (options::cont_indent_style == types::cont_indent_style_t::when_non_tuples_nested) {
     shift_indent = is_iterable_like<iterable_elem_type<T>> && !is_tuple<iterable_elem_type<T>>;
-  } else {
-    shift_indent = false;
   }
 
+  // Try printing on one line.
   if (!shift_indent) {
     std::string output = es::bracket("{ ", current_depth);
     bool is_first_elem = true;
-
     for (const auto &[is_ellipsis, it, _index] : skipped_set) {
       [[maybe_unused]] const auto &_index_unused = _index;  // for g++-7 compiler support
       const auto &elem = *it;
 
+      // Add comma.
       if (is_first_elem) {
         is_first_elem = false;
       } else {
         output += es::op(", ");
       }
 
+      // If the `elem` is an ellipsis, skip it.
       if (is_ellipsis) {
         output += es::op("...");
-
         if (last_line_length + get_length(output) + std::string_view(" }").size()
             > options::max_line_width) {
           shift_indent = true;
           break;
         }
-
         continue;
       }
 
+      // Add the stringified `elem`.
       std::string elem_str = export_var(
           elem, indent, last_line_length + get_length(output), next_depth, true, next_command
       );
-
-      // Treat the multiplicity as a member as export_map() does.
-      if constexpr (is_multiset<T>)
+      if constexpr (is_multiset<T>) {
+        // Treat the multiplicity as a member as export_map() does.
         elem_str += es::member(" (" + std::to_string(set.count(elem)) + ")");
-
+      }
       if (has_newline(elem_str)) {
         shift_indent = true;
         break;
       }
-
       output += elem_str;
+
+      // If the line length exceeds, stop the iteration.
       if (last_line_length + get_length(output) + std::string_view(" }").size()
           > options::max_line_width) {
         shift_indent = true;
@@ -151,15 +155,18 @@ inline auto export_set(
 
     if (!shift_indent) {
       output += es::bracket(" }", current_depth);
-
       return output;
     }
   }
 
-  if (fail_on_newline) return "\n";
+  // Print on multiple lines.
 
+  if (fail_on_newline) {
+    return "\n";
+  }
+
+  // Declare variables.
   std::string new_indent = indent + "  ";
-
   std::string output = es::bracket("{", current_depth);
   bool is_first_elem = true;
 
@@ -167,28 +174,35 @@ inline auto export_set(
     [[maybe_unused]] const auto &_index_unused = _index;  // for g++-7 compiler support
     const auto &elem = *it;
 
+    // Add comma.
     if (is_first_elem) {
       is_first_elem = false;
     } else {
       output += es::op(",");
     }
 
+    // If the `elem` is an ellipsis, skip it.
     if (is_ellipsis) {
       output += "\n" + new_indent + es::op("...");
       continue;
     }
 
+    // Add the stringified `elem`.
     output += "\n" + new_indent
               + export_var(elem, new_indent, new_indent.length(), next_depth, false, next_command);
-
-    // Treat the multiplicity as a member as export_map() does.
-    if constexpr (is_multiset<T>)
+    if constexpr (is_multiset<T>) {
+      // Treat the multiplicity as a member as export_map() does.
       output += es::member(" (" + std::to_string(set.count(elem)) + ")");
+    }
   }
   output += "\n" + indent + es::bracket("}", current_depth);
 
   return output;
 }
+
+}  // namespace _export_set
+
+using _export_set::export_set;
 
 }  // namespace _detail
 

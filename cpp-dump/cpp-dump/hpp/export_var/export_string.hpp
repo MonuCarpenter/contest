@@ -27,21 +27,27 @@ inline std::string export_string(
     bool fail_on_newline,
     const export_command &command
 ) {
-  if (command.escape_str()) return es::escaped_str(escape_string(value));
+  // Escape and export if needed.
+  if (command.escape_str()) {
+    return es::escaped_str(escape_string(value));
+  }
 
   // str = replace_string(str, R"(\)", R"(\\)");
   // str = replace_string(str, R"(`)", R"(\`)");
 
+  // If the value has a line break, wrap the value with `
   if (has_newline(value)) {
-    if (fail_on_newline) return "\n";
-
+    if (fail_on_newline) {
+      return "\n";
+    }
     return "\n" + es::character(std::string(1, '`').append(value)) + es::character("`");
   }
 
-  if (value.find('"') != std::string::npos)
-    return es::character(std::string(1, '`').append(value)) + es::character("`");
-
-  return es::character(std::string(1, '"').append(value)) + es::character("\"");
+  // Wrap the value with " or '
+  if (value.find('"') == std::string::npos) {
+    return es::character(std::string(1, '"').append(value)) + es::character("\"");
+  }
+  return es::character(std::string(1, '`').append(value)) + es::character("`");
 }
 
 }  // namespace _detail

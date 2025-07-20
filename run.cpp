@@ -87,6 +87,20 @@ void create_default_files(const fs::path& folder) {
             << "}\n";
         out.close();
     }
+    
+    // Create input.txt if it doesn't exist
+    if (!fs::exists(input_file)) {
+        std::ofstream out(input_file);
+        out << "1\n"; // Default: 1 test case
+        out.close();
+    }
+    
+    // Create output.txt if it doesn't exist
+    if (!fs::exists(output_file)) {
+        std::ofstream out(output_file);
+        out << "\n"; // Empty expected output initially
+        out.close();
+    }
 }
 
 void display_loader(std::atomic<bool>& loading) {
