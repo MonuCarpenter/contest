@@ -27,8 +27,8 @@ void create_default_files(const fs::path& folder) {
         std::cout << "Folder " << folder << " created." << std::endl;
     }
 
-    // Create default files if they do not exist
-    std::vector<std::string> files = {"code.cpp", "input1.txt", "output1.txt", "input2.txt", "output2.txt"};
+    // Create only code.cpp, input.txt, output.txt if they do not exist
+    std::vector<std::string> files = {"code.cpp", "input.txt", "output.txt"};
     for (const auto& file : files) {
         fs::path file_path = folder / file;
         if (!fs::exists(file_path)) {
@@ -44,20 +44,66 @@ void create_default_files(const fs::path& folder) {
         out << "/*\n"
             << " * Author: Monu Carpenter\n"
             << " * Handle: m_o_n_u\n"
-            << " * Time: " << __DATE__ << " " << __TIME__ << "\n"
-            << " * Problem: " << folder.string() << "\n"
+            << " * Time: ";
+        // Get current Indian time (IST) in 12-hour format with am/pm
+        std::time_t t = std::time(nullptr);
+        std::tm* ist_tm = std::gmtime(&t);
+        ist_tm->tm_hour += 5;
+        ist_tm->tm_min += 30;
+        mktime(ist_tm);
+        int hour12 = ist_tm->tm_hour;
+        std::string ampm = "AM";
+        if (hour12 >= 12) {
+            ampm = "PM";
+            if (hour12 > 12) hour12 -= 12;
+        }
+        if (hour12 == 0) hour12 = 12;
+        char timebuf[64];
+        std::strftime(timebuf, sizeof(timebuf), "%Y-%m-%d", ist_tm);
+        out << timebuf << " ";
+        out << std::setw(2) << std::setfill('0') << hour12 << ":"
+            << std::setw(2) << std::setfill('0') << ist_tm->tm_min << ":"
+            << std::setw(2) << std::setfill('0') << ist_tm->tm_sec << " " << ampm << " IST\n";
+        out << " * Problem: " << folder.string() << "\n"
             << "*/\n\n"
             << "#include <bits/stdc++.h>\n"
-            << "#define _for(n) for (int i = 0; i < n; i++)\n"
-            << "typedef long long ll;\n\n"
-            << "void solve() {}\n\n"
+            << "\n"
+            << "using i64 = long long;\n"
+            << "using u64 = unsigned long long;\n"
+            << "using u32 = unsigned;\n"
+            << "\n"
+            << "#ifndef ONLINE_JUDGE\n"
+            << "#include \"./cpp-dump/cpp-dump.hpp\"\n"
+            << "#define log(...) cpp_dump(__VA_ARGS__)\n"
+            << "template <>\n"
+            << "inline void cpp_dump::write_log(std::string_view output) {\n"
+            << "    std::cout << output << '\\n';\n"
+            << "}\n"
+            << "#else\n"
+            << "#define log(...)\n"
+            << "#define CPP_DUMP_SET_OPTION(...)\n"
+            << "#define CPP_DUMP_DEFINE_EXPORT_OBJECT(...)\n"
+            << "#define CPP_DUMP_DEFINE_EXPORT_OBJECT_GENERIC(...)\n"
+            << "#define CPP_DUMP_DEFINE_EXPORT_ENUM(...)\n"
+            << "#define CPP_DUMP_DEFINE_EXPORT_ENUM_GENERIC(...)\n"
+            << "#endif\n"
+            << "\n"
+            << "int solve() {\n"
+            << "    return 0;\n"
+            << "}\n"
+            << "\n"
             << "int main() {\n"
+            << "    CPP_DUMP_SET_OPTION(es_style, cpp_dump::types::es_style_t::no_es);\n"
             << "    std::ios::sync_with_stdio(false);\n"
             << "    std::cin.tie(nullptr);\n"
-            << "    int T;\n"
-            << "    std::cin >> T;\n"
-            << "    while (T--)\n"
+            << "\n"
+            << "    int t;\n"
+            << "    std::cin >> t;\n"
+            << "\n"
+            << "    while (t--) {\n"
             << "        solve();\n"
+            << "    }\n"
+            << "\n"
             << "    return 0;\n"
             << "}\n";
         out.close();
@@ -69,7 +115,6 @@ void display_loader(std::atomic<bool>& loading) {
     size_t frame = 0;
     int seconds = 0;
 
-    std::cout << "Running...  ";
     while (loading) {
         std::cout << "\b" << spin[frame];
         frame = (frame + 1) % spin.size();
@@ -89,94 +134,142 @@ void run_tests(const fs::path& folder) {
         return;
     }
 
-    // Loop through all input files
-    for (const auto& entry : fs::directory_iterator(folder)) {
-        if (entry.path().filename().string().find("input") != std::string::npos) {
-            std::string test_case_number = entry.path().filename().string().substr(5, 1);  // e.g., "input1.txt"
-            fs::path output_file = folder / ("output" + test_case_number + ".txt");
+    // Print summary table header
+    std::cout << "\033[1m================================================================================================================\033[0m\n";
+    std::cout << "\033[1m| Test Case | Status   | Input                | Output               | Expected             | Diff                |\033[0m\n";
+    std::cout << "\033[1m|-----------|----------|----------------------|----------------------|----------------------|---------------------|\033[0m\n";
+    // Only use input.txt and output.txt for single test case
+    fs::path input_path = folder / "input.txt";
+    fs::path output_path = folder / "output.txt";
+    std::string input_str, result, expected, diff_str;
+    std::string test_case_number = "1";
+    if (is_effectively_empty(input_path)) {
+        input_str = "No Input";
+        result = "No Output";
+        expected = fs::exists(output_path) ? "See file" : "No expected output file";
+        diff_str = "No difference to show";
+        std::string status_colored = "\033[1;43;30m Skipped \033[0m"; // Yellow background, black text
+        auto compact = [](const std::string& s) {
+            std::string out;
+            std::istringstream iss(s);
+            std::string line;
+            bool first = true;
+            while (std::getline(iss, line)) {
+                if (!first) out += "  ";
+                out += line;
+                first = false;
+            }
+            if (out.empty()) out = "(empty)";
+            if (out.size() > 20) out = out.substr(0, 17) + "...";
+            return out;
+        };
+        std::cout << "| " << std::setw(9) << test_case_number << " | " << std::setw(9) << status_colored << " | "
+                  << std::setw(20) << compact(input_str) << " | "
+                  << std::setw(20) << compact(result) << " | "
+                  << std::setw(20) << compact(expected) << " | "
+                  << std::setw(19) << compact(diff_str) << " |\n";
+    } else {
+        std::ifstream input_file(input_path);
+        std::stringstream input_buffer;
+        input_buffer << input_file.rdbuf();
+        input_str = input_buffer.str();
 
-            // Check if input file is effectively empty
-            if (is_effectively_empty(entry.path())) {
-                std::cout << "\nTest case #" << test_case_number << ":\n";
-                std::cout << "\033[34mStatus: \033[1;34mSkipped\033[0m\n";
-                std::cout << "\033[33mInput:\033[0m\nNo Input\n";
-                std::cout << "\033[33mOutput:\033[0m\nNo expected output file\n";
-                std::cout << "\033[33mExpected Output:\033[0m\n";
-                if (fs::exists(output_file)) {
-                    std::ifstream exp_out(output_file);
-                    std::cout << exp_out.rdbuf();
-                } else {
-                    std::cout << "No expected output file\n";
+        // Run the test case
+        std::string run_command = folder.string() + "/code < " + input_path.string();
+        std::array<char, 128> buffer;
+        FILE* pipe = popen(run_command.c_str(), "r");
+        if (!pipe) {
+            result = "Error";
+            std::string status_colored = "\033[1;100;97m Error \033[0m"; // Grey background, white text
+            auto compact = [](const std::string& s) {
+                std::string out;
+                std::istringstream iss(s);
+                std::string line;
+                bool first = true;
+                while (std::getline(iss, line)) {
+                    if (!first) out += "  ";
+                    out += line;
+                    first = false;
                 }
-                std::cout << "\033[33mDifference:\033[0m\nNo difference to show\n";
-                continue;
-            }
-
-            // Run the test case
-            std::string run_command = folder.string() + "/code < " + entry.path().string();
-            std::array<char, 128> buffer;
-            std::string result;
-            FILE* pipe = popen(run_command.c_str(), "r");
-            if (!pipe) {
-                std::cerr << "Error running test case " << test_case_number << std::endl;
-                continue;
-            }
+                if (out.empty()) out = "(empty)";
+                if (out.size() > 20) out = out.substr(0, 17) + "...";
+                return out;
+            };
+            std::cout << "| " << std::setw(9) << test_case_number << " | " << std::setw(9) << status_colored << " | "
+                      << std::setw(20) << compact(input_str) << " | "
+                      << std::setw(20) << compact(result) << " | "
+                      << std::setw(20) << "N/A" << " | "
+                      << std::setw(19) << "N/A" << " |\n";
+        } else {
             while (fgets(buffer.data(), 128, pipe) != nullptr) {
                 result += buffer.data();
             }
             pclose(pipe);
 
-            // Compare with expected output
-            std::ifstream expected_file(output_file);
+            // Read expected output
+            std::ifstream expected_file(output_path);
             std::stringstream expected_buffer;
             expected_file >> expected_buffer.rdbuf();
-            std::string expected = expected_buffer.str();
+            expected = expected_buffer.str();
 
-            std::string status = (result == expected) ? "\033[32mPassed\033[0m" : "\033[31mFailed\033[0m";
-
-            // Log results directly to console
-            std::cout << "\nTest case #" << test_case_number << ":\n";
-            std::cout << "\033[33mStatus: " << status << "\033[0m\n";
-            std::cout << "\033[33mInput:\033[0m\n";
-            std::ifstream input_file(entry.path());
-            std::cout << input_file.rdbuf();
-            std::cout << "\n";
-            std::cout << "\033[33mOutput:\033[0m\n"
-                      << result << std::endl;
-
-            std::cout << "\033[33mExpected Output:\033[0m\n"
-                      << expected << std::endl;
+            // Fix output comparison: ignore trailing whitespace and newlines
+            auto trim = [](std::string s) {
+                while (!s.empty() && (s.back() == '\n' || s.back() == '\r' || s.back() == ' ' || s.back() == '\t')) s.pop_back();
+                return s;
+            };
+            std::string status, status_colored;
+            if (trim(result) == trim(expected)) {
+                status = "Passed";
+                status_colored = "\033[1;42;30m Passed \033[0m"; // Green background, black text
+            } else {
+                status = "Failed";
+                status_colored = "\033[1;41;97m Failed \033[0m"; // Red background, white text
+            }
 
             // Compare expected and actual output line by line
             std::istringstream expected_stream(expected);
             std::istringstream result_stream(result);
             std::string expected_line, result_line;
-
             bool difference_found = false;
+            std::stringstream diff_buffer;
             while (std::getline(expected_stream, expected_line) && std::getline(result_stream, result_line)) {
                 if (expected_line != result_line) {
-                    std::cout << "- Expected: " << expected_line << "\n";
-                    std::cout << "+ Found: " << result_line << "\n";
+                    diff_buffer << "- " << expected_line << " | + " << result_line << "\n";
                     difference_found = true;
                 }
             }
+            while (std::getline(expected_stream, expected_line)) {
+                diff_buffer << "- " << expected_line << "\n";
+                difference_found = true;
+            }
+            while (std::getline(result_stream, result_line)) {
+                diff_buffer << "+ " << result_line << "\n";
+                difference_found = true;
+            }
+            diff_str = difference_found ? diff_buffer.str() : "No difference";
 
-            if (!difference_found && expected_stream.eof() && result_stream.eof()) {
-                std::cout << "No difference found\n";
-            } else {
-                // Handle any leftover lines if one file is longer than the other
-                while (std::getline(expected_stream, expected_line)) {
-                    std::cout << "- Expected: " << expected_line << "\n";
-                    difference_found = true;
+            // Print horizontal table row
+            auto compact = [](const std::string& s) {
+                std::string out;
+                std::istringstream iss(s);
+                std::string line;
+                bool first = true;
+                while (std::getline(iss, line)) {
+                    if (!first) out += "  ";
+                    out += line;
+                    first = false;
                 }
-                while (std::getline(result_stream, result_line)) {
-                    std::cout << "+ Found: " << result_line << "\n";
-                    difference_found = true;
-                }
-            }
+                if (out.empty()) out = "(empty)";
+                if (out.size() > 20) out = out.substr(0, 17) + "...";
+                return out;
+            };
+            std::cout << "| " << std::setw(9) << test_case_number << " | " << std::setw(9) << status_colored << " | "
+                      << std::setw(20) << compact(input_str) << " | "
+                      << std::setw(20) << compact(result) << " | "
+                      << std::setw(20) << compact(expected) << " | "
+                      << std::setw(19) << compact(diff_str) << " |\n";
         }
     }
-
     // Clean up - remove compiled program
     fs::remove(folder / "code");
 }
