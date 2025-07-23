@@ -161,10 +161,21 @@ void run_tests(const fs::path& folder) {
     expected_buffer << expected_file.rdbuf();
     expected = expected_buffer.str();
 
-    // Print full input, output, expected in bold before the table
-    std::cout << "\033[1mInput:\033[0m\n" << input_str << "\n";
-    std::cout << "\033[1mOutput:\033[0m\n" << result << "\n";
-    std::cout << "\033[1mExpected:\033[0m\n" << expected << "\n";
+    // Print full input, output, expected in vertical format before the table
+    auto print_vertical = [](const std::string& label, const std::string& content) {
+        std::cout << "\033[1m" << label << ":\033[0m\n";
+        std::istringstream iss(content);
+        std::string line;
+        int line_num = 1;
+        while (std::getline(iss, line)) {
+            std::cout << "  [" << line_num << "] " << line << "\n";
+            line_num++;
+        }
+        if (line_num == 1) std::cout << "  (empty)\n";
+    };
+    print_vertical("Input", input_str);
+    print_vertical("Output", result);
+    print_vertical("Expected", expected);
     std::cout << "\033[1m(Use OJ=1 ./run folder to simulate online judge)\033[0m\n\n";
 
     // Print summary table header
@@ -179,7 +190,7 @@ void run_tests(const fs::path& folder) {
         diff_str = "No difference to show";
         std::string status_colored = "\033[1;43;30m Skipped \033[0m"; // Yellow background, black text
 
-        auto compact = [](const std::string& s) {
+        auto full_content = [](const std::string& s) {
             std::string out;
             std::istringstream iss(s);
             std::string line;
@@ -190,15 +201,14 @@ void run_tests(const fs::path& folder) {
                 first = false;
             }
             if (out.empty()) out = "(empty)";
-            if (out.size() > 20) out = out.substr(0, 17) + "...";
             return out;
         };
 
         std::cout << "| " << std::setw(9) << test_case_number << " | " << std::setw(9) << status_colored << " | "
-                  << std::setw(20) << compact(input_str) << " | "
-                  << std::setw(20) << compact(result) << " | "
-                  << std::setw(20) << compact(expected) << " | "
-                  << std::setw(19) << compact(diff_str) << " |\n";
+                  << full_content(input_str) << " | "
+                  << full_content(result) << " | "
+                  << full_content(expected) << " | "
+                  << full_content(diff_str) << " |\n";
     } else {
         // Fix output comparison: ignore trailing whitespace and newlines
         auto trim = [](std::string s) {
@@ -277,6 +287,7 @@ void run_tests(const fs::path& folder) {
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "Usage: " << argv[0] << " <folder_name>\n";
+        std::cerr << "(Set OJ=1 in environment to enable ONLINE_JUDGE macro during compilation)\n";
         return 1;
     }
 
