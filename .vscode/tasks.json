@@ -1,0 +1,10 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Compile timofey/code.cpp",
+			"command": "g++ -std=c++17 -O2 -Wall /Users/monu/Desktop/contest/timofey/code.cpp -o /Users/monu/Desktop/contest/timofey/code.out"
+		}
+	]
+}
