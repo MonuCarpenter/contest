@@ -1,13 +1,13 @@
+#include <array>
+#include <atomic>
+#include <ctime>
 #include <filesystem>
 #include <fstream>
-#include <iostream>
-#include <string>
-#include <array>
-#include <ctime>
 #include <iomanip>
+#include <iostream>
 #include <sstream>
+#include <string>
 #include <thread>
-#include <atomic>
 #include <vector>
 
 namespace fs = std::filesystem;
@@ -28,8 +28,10 @@ std::string get_ist_time() {
     // Convert to 12-hour format
     std::string ampm = (ist_hours >= 12) ? "PM" : "AM";
     int display_hour = ist_hours;
-    if (display_hour == 0) display_hour = 12;
-    else if (display_hour > 12) display_hour -= 12;
+    if (display_hour == 0)
+        display_hour = 12;
+    else if (display_hour > 12)
+        display_hour -= 12;
 
     std::ostringstream oss;
     oss << std::setfill('0') << std::setw(2) << display_hour
@@ -58,26 +60,46 @@ void create_default_files(const fs::path& folder) {
 
     if (!fs::exists(code_file)) {
         std::ofstream out(code_file);
-        out << "// Created at " << get_ist_time() << "\n\n"
+        out << "/*\n"
+            << " * Author: Monu Carpenter\n"
+            << " * Handle: m_o_n_u\n"
+            << " * Time: " << get_ist_time() << "\n"
+            << " * Problem: <problem-name>\n"
+            << " */\n"
+            << "\n"
             << "#include <bits/stdc++.h>\n"
-            << "using namespace std;\n"
+            << "\n"
+            << "using i64 = long long;\n"
+            << "using u64 = unsigned long long;\n"
+            << "using u32 = unsigned;\n"
             << "\n"
             << "#ifndef ONLINE_JUDGE\n"
             << "#include \"../cpp-dump/cpp-dump.hpp\"\n"
+            << "#define log(...) cpp_dump(__VA_ARGS__)\n"
+            << "template <>\n"
+            << "inline void cpp_dump::write_log(std::string_view output) {\n"
+            << "    std::cout << output << '\\n';\n"
+            << "}\n"
             << "#else\n"
-            << "#define dump(...)\n"
+            << "#define log(...)\n"
+            << "#define CPP_DUMP_SET_OPTION(...)\n"
+            << "#define CPP_DUMP_DEFINE_EXPORT_OBJECT(...)\n"
+            << "#define CPP_DUMP_DEFINE_EXPORT_OBJECT_GENERIC(...)\n"
+            << "#define CPP_DUMP_DEFINE_EXPORT_ENUM(...)\n"
+            << "#define CPP_DUMP_DEFINE_EXPORT_ENUM_GENERIC(...)\n"
             << "#endif\n"
             << "\n"
-            << "void solve() {\n"
-            << "    // Your code here\n"
+            << "int solve() {\n"
+            << "    return 0;\n"
             << "}\n"
             << "\n"
             << "int main() {\n"
-            << "    ios_base::sync_with_stdio(false);\n"
-            << "    cin.tie(NULL);\n"
+            << "    CPP_DUMP_SET_OPTION(es_style, cpp_dump::types::es_style_t::no_es);\n"
+            << "    std::ios::sync_with_stdio(false);\n"
+            << "    std::cin.tie(nullptr);\n"
             << "\n"
             << "    int t;\n"
-            << "    cin >> t;\n"
+            << "    std::cin >> t;\n"
             << "\n"
             << "    while (t--) {\n"
             << "        solve();\n"
@@ -91,14 +113,14 @@ void create_default_files(const fs::path& folder) {
     // Create input.txt if it doesn't exist
     if (!fs::exists(input_file)) {
         std::ofstream out(input_file);
-        out << "1\n"; // Default: 1 test case
+        out << "1\n";  // Default: 1 test case
         out.close();
     }
 
     // Create output.txt if it doesn't exist
     if (!fs::exists(output_file)) {
         std::ofstream out(output_file);
-        out << "\n"; // Empty expected output initially
+        out << "\n";  // Empty expected output initially
         out.close();
     }
 }
@@ -125,7 +147,7 @@ void run_tests(const fs::path& folder) {
     std::string test_case_number = "1";
 
     // Compile the C++ program first
-    bool use_online_judge = std::getenv("OJ") != nullptr; // Set OJ=1 in env to enable
+    bool use_online_judge = std::getenv("OJ") != nullptr;  // Set OJ=1 in env to enable
     std::string compile_command = "g++-15 -std=c++20 ";
     if (use_online_judge) compile_command += "-DONLINE_JUDGE ";
     compile_command += "-o " + folder.string() + "/code " + folder.string() + "/code.cpp";
@@ -188,7 +210,7 @@ void run_tests(const fs::path& folder) {
         result = "No Output";
         expected = fs::exists(output_path) ? "See file" : "No expected output file";
         diff_str = "No difference to show";
-        std::string status_colored = "\033[1;43;30m Skipped \033[0m"; // Yellow background, black text
+        std::string status_colored = "\033[1;43;30m Skipped \033[0m";  // Yellow background, black text
 
         auto full_content = [](const std::string& s) {
             std::string out;
@@ -225,10 +247,10 @@ void run_tests(const fs::path& folder) {
 
         if (trimmed_result == trimmed_expected) {
             status = "Passed";
-            status_colored = "\033[1;42;30m Passed \033[0m"; // Green background, black text
+            status_colored = "\033[1;42;30m Passed \033[0m";  // Green background, black text
         } else {
             status = "Failed";
-            status_colored = "\033[1;41;97m Failed \033[0m"; // Red background, white text
+            status_colored = "\033[1;41;97m Failed \033[0m";  // Red background, white text
         }
 
         // Compare expected and actual output line by line
