@@ -1,7 +1,7 @@
 /*
  * Author: Monu Carpenter
  * Handle: m_o_n_u
- * Time: 11:04 AM IST
+ * Time: 12:04 PM IST
  * Problem: <problem-name>
  */
 
@@ -27,13 +27,9 @@ inline void cpp_dump::write_log(std::string_view output) {
 #define CPP_DUMP_DEFINE_EXPORT_ENUM_GENERIC(...)
 #endif
 
-class Solution {
-   public:
-    std::string is_divisible(i64 x, i64 y) {
-        if (x * 2== y) return "No";
-        return "Yes";
-    }
-};
+int solve() {
+    return 0;
+}
 
 int main() {
     CPP_DUMP_SET_OPTION(es_style, cpp_dump::types::es_style_t::no_es);
@@ -43,12 +39,8 @@ int main() {
     int t;
     std::cin >> t;
 
-    Solution sol;
-
     while (t--) {
-        i64 x, y;
-        std::cin >> x >> y;
-        std::cout << sol.is_divisible(x, y) << '\n';
+        solve();
     }
 
     return 0;
