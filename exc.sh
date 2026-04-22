@@ -9,6 +9,12 @@ fi
 folder="$1"
 
 git add . ":(exclude)$folder"
-git commit -m "added: codeforces solutions $folder"
-git push origin main
+
+if git diff --cached --quiet; then
+  echo "No changes to commit. Skipping git commit and push."
+else
+  git commit -m "added: codeforces solutions $folder"
+  git push origin main
+fi
+
 ./run "$folder"
