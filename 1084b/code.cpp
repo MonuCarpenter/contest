@@ -14,9 +14,8 @@ using u32 = unsigned;
 #ifndef ONLINE_JUDGE
 #include "../cpp-dump/cpp-dump.hpp"
 #define log(...) cpp_dump(__VA_ARGS__)
-template <>
-inline void cpp_dump::write_log(std::string_view output) {
-    std::cout << output << '\n';
+template <> inline void cpp_dump::write_log(std::string_view output) {
+  std::cout << output << '\n';
 }
 #else
 #define log(...)
@@ -28,44 +27,45 @@ inline void cpp_dump::write_log(std::string_view output) {
 #endif
 
 int solve() {
-    int n; std::cin >> n; 
+  int n;
+  std::cin >> n;
 
-    int a[n];
-    for (int i = 0; i < n; i++) {
-        log("input", i, a[i]);
-        std::cin >> a[i];
-    }
+  int a[n];
+  for (int i = 0; i < n; i++) {
+    log("input", i, a[i]);
+    std::cin >> a[i];
+  }
 
-    if(n <= 1) { 
-        std::cout << 0 << std::endl;
-        return 0;
-    }
-
-    int result = 0; 
-
-    for (int i = 0; i + 1 <= n; i++) {
-        log("comparing", a[i], a[i + 1]);
-        if(a[i] > a[i + 1]) { 
-            log("matched", a[i], a[i + 1]);
-            result++;
-        }
-    }
-
-    std::cout << result << std::endl;
+  if (n <= 1) {
+    std::cout << 0 << std::endl;
     return 0;
+  }
+
+  int result = 0;
+
+  for (int i = 0; i + 1 <= n; i++) {
+    log("comparing", a[i], a[i + 1]);
+    if (a[i] > a[i + 1]) {
+      log("matched", a[i], a[i + 1]);
+      result++;
+    }
+  }
+
+  std::cout << result << std::endl;
+  return 0;
 }
 
 int main() {
-    CPP_DUMP_SET_OPTION(es_style, cpp_dump::types::es_style_t::no_es);
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
+  CPP_DUMP_SET_OPTION(es_style, cpp_dump::types::es_style_t::no_es);
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(nullptr);
 
-    int t;
-    std::cin >> t;
+  int t;
+  std::cin >> t;
 
-    while (t--) {
-        solve();
-    }
+  while (t--) {
+    solve();
+  }
 
-    return 0;
+  return 0;
 }
