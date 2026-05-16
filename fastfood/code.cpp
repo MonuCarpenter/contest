@@ -49,7 +49,9 @@ public:
     for (int i = 0; i < sn; i++) {
       int min = INT_MAX;
 
-      for (int item : stickers[i]) {
+      for (int ii = 0; ii < stickers[i].size() - 1; ii++) {
+        int item = stickers[i][ii];
+
         int rr = csc[item - 1];
         if (rr < min) {
           min = rr;
@@ -69,6 +71,8 @@ int main() {
 
   int t;
   std::cin >> t;
+
+  Solution sol;
 
   while (t--) {
     sol.fastfood();
