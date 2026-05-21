@@ -1,12 +1,11 @@
 /*
  * Author: Monu Carpenter
  * Handle: m_o_n_u
- * Time: 11:04 AM IST
+ * Time: 12:18 PM IST
  * Problem: <problem-name>
  */
 
 #include <bits/stdc++.h>
-#include <sys/signal.h>
 
 using i64 = long long;
 using u64 = unsigned long long;
@@ -27,14 +26,23 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 #define CPP_DUMP_DEFINE_EXPORT_ENUM_GENERIC(...)
 #endif
 
-class Solution {
-public:
-  std::string is_divisible(i64 x, i64 y) {
-    if (x * 2 == y)
-      return "No";
-    return "Yes";
-  }
-};
+int solve() {
+  i64 n, ind_cost, group_cost;
+  std::cin >> n >> ind_cost >> group_cost;
+
+  i64 per_three_cost = std::min(ind_cost * 3, group_cost);
+  i64 per_two_cost = std::min(ind_cost * 2, group_cost);
+  i64 per_one_cost = std::min(ind_cost, group_cost);
+
+  i64 trees = n / 3;
+  i64 twos = ((n % 3) / 2);
+  i64 ones = ((n % 3) % 2);
+
+  std::cout << (trees * per_three_cost) + (twos * per_two_cost) +
+                   (ones * per_one_cost)
+            << '\n';
+  return 0;
+}
 
 int main() {
   CPP_DUMP_SET_OPTION(es_style, cpp_dump::types::es_style_t::no_es);
@@ -44,12 +52,8 @@ int main() {
   int t;
   std::cin >> t;
 
-  Solution sol;
-
   while (t--) {
-    i64 x, y;
-    std::cin >> x >> y;
-    std::cout << sol.is_divisible(x, y) << '\n';
+    solve();
   }
 
   return 0;
