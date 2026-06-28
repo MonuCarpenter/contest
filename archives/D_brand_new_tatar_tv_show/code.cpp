@@ -1,10 +1,17 @@
+/*
+ * Author: Monu Carpenter
+ * Handle: m_o_n_u
+ * Time: 12:28 PM IST
+ * Problem: <problem-name>
+ */
+
 #include <bits/stdc++.h>
 
 using i64 = long long;
 using u64 = unsigned long long;
 using u32 = unsigned;
 
-#ifndef MONU_LOCAL_JUDGE
+#ifndef ONLINE_JUDGE
 #include "../cpp-dump/cpp-dump.hpp"
 #define log(...) cpp_dump(__VA_ARGS__)
 template <> inline void cpp_dump::write_log(std::string_view output) {

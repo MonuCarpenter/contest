@@ -59,54 +59,38 @@ void create_default_files(const fs::path& folder) {
     fs::path output_file = folder / "output.txt";
 
     if (!fs::exists(code_file)) {
+        std::ifstream template_in("template.cpp");
+        std::string code_content;
+
+        std::string header =
+            std::string("/*\n"
+                        " * Author: Monu Carpenter\n"
+                        " * Handle: m_o_n_u\n"
+                        " * Time: ") + get_ist_time() + "\n"
+            " * Problem: " + folder.filename().string() + "\n"
+            " */\n\n";
+
+        if (template_in) {
+            std::stringstream buf;
+            buf << template_in.rdbuf();
+            code_content = header + buf.str();
+        } else {
+            code_content = header +
+                "int solve() {\n"
+                "    return 0;\n"
+                "}\n\n"
+                "int main() {\n"
+                "    int t;\n"
+                "    std::cin >> t;\n"
+                "    while (t--) {\n"
+                "        solve();\n"
+                "    }\n"
+                "    return 0;\n"
+                "}\n";
+        }
+
         std::ofstream out(code_file);
-        out << "/*\n"
-            << " * Author: Monu Carpenter\n"
-            << " * Handle: m_o_n_u\n"
-            << " * Time: " << get_ist_time() << "\n"
-            << " * Problem: <problem-name>\n"
-            << " */\n"
-            << "\n"
-            << "#include <bits/stdc++.h>\n"
-            << "\n"
-            << "using i64 = long long;\n"
-            << "using u64 = unsigned long long;\n"
-            << "using u32 = unsigned;\n"
-            << "\n"
-            << "#ifndef ONLINE_JUDGE\n"
-            << "#include \"../cpp-dump/cpp-dump.hpp\"\n"
-            << "#define log(...) cpp_dump(__VA_ARGS__)\n"
-            << "template <>\n"
-            << "inline void cpp_dump::write_log(std::string_view output) {\n"
-            << "    std::cout << output << '\\n';\n"
-            << "}\n"
-            << "#else\n"
-            << "#define log(...)\n"
-            << "#define CPP_DUMP_SET_OPTION(...)\n"
-            << "#define CPP_DUMP_DEFINE_EXPORT_OBJECT(...)\n"
-            << "#define CPP_DUMP_DEFINE_EXPORT_OBJECT_GENERIC(...)\n"
-            << "#define CPP_DUMP_DEFINE_EXPORT_ENUM(...)\n"
-            << "#define CPP_DUMP_DEFINE_EXPORT_ENUM_GENERIC(...)\n"
-            << "#endif\n"
-            << "\n"
-            << "int solve() {\n"
-            << "    return 0;\n"
-            << "}\n"
-            << "\n"
-            << "int main() {\n"
-            << "    CPP_DUMP_SET_OPTION(es_style, cpp_dump::types::es_style_t::no_es);\n"
-            << "    std::ios::sync_with_stdio(false);\n"
-            << "    std::cin.tie(nullptr);\n"
-            << "\n"
-            << "    int t;\n"
-            << "    std::cin >> t;\n"
-            << "\n"
-            << "    while (t--) {\n"
-            << "        solve();\n"
-            << "    }\n"
-            << "\n"
-            << "    return 0;\n"
-            << "}\n";
+        out << code_content;
         out.close();
     }
 
@@ -147,9 +131,9 @@ void run_tests(const fs::path& folder) {
     std::string test_case_number = "1";
 
     // Compile the C++ program first
-    bool use_online_judge = std::getenv("OJ") != nullptr;  // Set OJ=1 in env to enable
+    bool use_online_judge = std::getenv("OJ") != nullptr;  // Set OJ=1 in env to enable MONU_LOCAL_JUDGE
     std::string compile_command = "g++-15 -std=c++20 ";
-    if (use_online_judge) compile_command += "-DONLINE_JUDGE ";
+    if (use_online_judge) compile_command += "-DMONU_LOCAL_JUDGE ";
     compile_command += "-o " + folder.string() + "/code " + folder.string() + "/code.cpp";
 
     std::cout << "\033[1mCompiling...\033[0m\n";
@@ -198,7 +182,7 @@ void run_tests(const fs::path& folder) {
     print_vertical("Input", input_str);
     print_vertical("Output", result);
     print_vertical("Expected", expected);
-    std::cout << "\033[1m(Use OJ=1 ./run folder to simulate online judge)\033[0m\n\n";
+    std::cout << "\033[1m(Use OJ=1 ./run folder to simulate judge environment)\033[0m\n\n";
 
     // Print summary table header
     std::cout << "\033[1m================================================================================================================\033[0m\n";
@@ -309,7 +293,7 @@ void run_tests(const fs::path& folder) {
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "Usage: " << argv[0] << " <folder_name>\n";
-        std::cerr << "(Set OJ=1 in environment to enable ONLINE_JUDGE macro during compilation)\n";
+        std::cerr << "(Set OJ=1 in environment to enable MONU_LOCAL_JUDGE macro during compilation)\n";
         return 1;
     }
 

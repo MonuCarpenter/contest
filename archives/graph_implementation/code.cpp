@@ -1,10 +1,17 @@
+/*
+ * Author: Monu Carpenter
+ * Handle: m_o_n_u
+ * Time: 07:15 PM IST
+ * Problem: <problem-name>
+ */
+
 #include <bits/stdc++.h>
 
 using i64 = long long;
 using u64 = unsigned long long;
 using u32 = unsigned;
 
-#ifndef MONU_LOCAL_JUDGE
+#ifndef ONLINE_JUDGE
 #include "../cpp-dump/cpp-dump.hpp"
 #define log(...) cpp_dump(__VA_ARGS__)
 template <> inline void cpp_dump::write_log(std::string_view output) {
@@ -19,9 +26,13 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 #define CPP_DUMP_DEFINE_EXPORT_ENUM_GENERIC(...)
 #endif
 
-class Solution {
-public:
-  void solve() {}
+typedef std::pair<int, int> pii;
+typedef std::vector<pii> vii;
+typedef std::tuple<int, int, int> tiii;
+
+class Graph {
+  std::vector<vii> graph;
+  std::vector<tiii> edges;
 };
 
 int main() {
@@ -29,13 +40,11 @@ int main() {
   std::ios::sync_with_stdio(false);
   std::cin.tie(nullptr);
 
-  int t;
-  std::cin >> t;
+  // practice bits
+  int used;
 
-  Solution sol;
-  while (t--) {
-    sol.solve();
-  }
+  used |= 1 >> 2;
+  log(used);
 
   return 0;
 }

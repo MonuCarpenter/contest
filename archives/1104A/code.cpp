@@ -1,10 +1,17 @@
+/*
+ * Author: Monu Carpenter
+ * Handle: m_o_n_u
+ * Time: 07:45 PM IST
+ * Problem: Destroying Towers!!
+ */
+
 #include <bits/stdc++.h>
 
 using i64 = long long;
 using u64 = unsigned long long;
 using u32 = unsigned;
 
-#ifndef MONU_LOCAL_JUDGE
+#ifndef ONLINE_JUDGE
 #include "../cpp-dump/cpp-dump.hpp"
 #define log(...) cpp_dump(__VA_ARGS__)
 template <> inline void cpp_dump::write_log(std::string_view output) {
@@ -21,7 +28,26 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 
 class Solution {
 public:
-  void solve() {}
+  void solve() {
+    int n;
+    std::cin >> n;
+
+    int result = 0;
+
+    int current_min = INT_MAX;
+    while (n--) {
+      int x;
+      std::cin >> x;
+
+      if (x < current_min) {
+        current_min = x;
+      }
+
+      result += current_min;
+    }
+
+    std::cout << result << '\n';
+  }
 };
 
 int main() {
@@ -32,9 +58,10 @@ int main() {
   int t;
   std::cin >> t;
 
-  Solution sol;
+  Solution solution;
+
   while (t--) {
-    sol.solve();
+    solution.solve();
   }
 
   return 0;
