@@ -1,3 +1,10 @@
+/*
+ * Author: Monu Carpenter
+ * Handle: m_o_n_u
+ * Time: 04:17 PM IST
+ * Problem: epig_dance_off
+ */
+
 #include <bits/stdc++.h>
 
 using i64 = long long;
@@ -21,7 +28,35 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 
 class Solution {
 public:
-  void solve() {}
+  int count_dancers(int n, int m) {
+    std::vector<std::string> s(n + 1);
+
+    for (int i = 0; i < n; ++i) {
+      std::cin >> s[i];
+    }
+
+    log(s);
+    int result = 0;
+    for (int i = 0; i < m; i++) {
+      bool flag = false;
+      for (int j = 0; j < n; j++) {
+        if (s[i][j] == '_') {
+          flag = true;
+        }
+      }
+      if (flag) {
+        result++;
+      }
+    }
+
+    return result + 1;
+  }
+  void solve() {
+    int n, m;
+    std::cin >> n >> m;
+
+    std::cout << count_dancers(n, m) << std::endl;
+  }
 };
 
 int main() {
@@ -29,13 +64,8 @@ int main() {
   std::ios::sync_with_stdio(false);
   std::cin.tie(nullptr);
 
-  int t;
-  std::cin >> t;
-
   Solution sol;
-  while (t--) {
-    sol.solve();
-  }
+  sol.solve();
 
   return 0;
 }

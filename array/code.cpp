@@ -1,3 +1,10 @@
+/*
+ * Author: Monu Carpenter
+ * Handle: m_o_n_u
+ * Time: 04:40 PM IST
+ * Problem: array
+ */
+
 #include <bits/stdc++.h>
 
 using i64 = long long;
@@ -21,7 +28,28 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 
 class Solution {
 public:
-  void solve() {}
+  void solve() {
+    i64 n;
+    std::cin >> n;
+
+    if (n == 1) {
+      std::cout << "1\n";
+      return;
+    }
+
+    if (n == 2) {
+      std::cout << "-1\n";
+      return;
+    }
+
+    std::cout << 1 << " " << 2 << " " << 3 << " ";
+    i64 current_sum = 6;
+    for (i64 i = 3; i < n; i++) {
+      std::cout << current_sum << " ";
+      current_sum *= 2;
+    }
+    std::cout << std::endl;
+  }
 };
 
 int main() {
@@ -29,7 +57,7 @@ int main() {
   std::ios::sync_with_stdio(false);
   std::cin.tie(nullptr);
 
-  int t;
+  i64 t;
   std::cin >> t;
 
   Solution sol;

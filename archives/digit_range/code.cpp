@@ -1,3 +1,10 @@
+/*
+ * Author: Monu Carpenter
+ * Handle: m_o_n_u
+ * Time: 09:59 PM IST
+ * Problem: digit_range
+ */
+
 #include <bits/stdc++.h>
 
 using i64 = long long;
@@ -21,7 +28,7 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 
 class Solution {
 public:
-  void solve() {}
+  int maxDigitRange(vector<int> &nums) {}
 };
 
 int main() {
@@ -29,13 +36,9 @@ int main() {
   std::ios::sync_with_stdio(false);
   std::cin.tie(nullptr);
 
-  int t;
-  std::cin >> t;
-
   Solution sol;
-  while (t--) {
-    sol.solve();
-  }
+  int result = sol.maxDigitRange({5724, 111, 350});
 
+  log(result);
   return 0;
 }

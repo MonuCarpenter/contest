@@ -1,8 +1,16 @@
+/*
+ * Author: Monu Carpenter
+ * Handle: m_o_n_u
+ * Time: 04:18 PM IST
+ * Problem: baloni
+ */
+
 #include <bits/stdc++.h>
 
 using i64 = long long;
 using u64 = unsigned long long;
 using u32 = unsigned;
+using namespace std;
 
 #ifdef MONU_LOCAL_JUDGE
 #include "../cpp-dump/cpp-dump.hpp"
@@ -20,8 +28,34 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 #endif
 
 class Solution {
+private:
+  int sum(std::vector<int> &counts) {
+    int total = 0;
+    for (int count : counts) {
+      total += count;
+    }
+    return total;
+  };
+
 public:
-  void solve() {}
+  void solve() {
+    int n;
+    std::cin >> n;
+    std::vector<int> counts(n + 2, 0);
+
+    for (int i = 0; i < n; i++) {
+      int temp;
+      std::cin >> temp;
+      if (counts[temp] == 0) {
+        counts[temp - 1]++;
+      } else {
+        counts[temp]--;
+        counts[temp - 1]++;
+      }
+    }
+
+    std::cout << sum(counts) << std::endl;
+  }
 };
 
 int main() {
@@ -29,13 +63,8 @@ int main() {
   std::ios::sync_with_stdio(false);
   std::cin.tie(nullptr);
 
-  int t;
-  std::cin >> t;
-
   Solution sol;
-  while (t--) {
-    sol.solve();
-  }
+  sol.solve();
 
   return 0;
 }

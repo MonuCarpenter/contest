@@ -1,3 +1,10 @@
+/*
+ * Author: Monu Carpenter
+ * Handle: m_o_n_u
+ * Time: 11:32 PM IST
+ * Problem: bigrams
+ */
+
 #include <bits/stdc++.h>
 
 using i64 = long long;
@@ -19,9 +26,39 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 #define CPP_DUMP_DEFINE_EXPORT_ENUM_GENERIC(...)
 #endif
 
+// given a number n and n numbers in the next line
+// 1 1 2 2
+// abccdd
+// ab bc cc cd dd
 class Solution {
 public:
-  void solve() {}
+  void solve() {
+    int n;
+    std::cin >> n;
+
+    std::vector<int> a(n);
+    while (n--) {
+      std::cin >> a[n];
+    }
+
+    int count = 0;
+
+    for (int i = 0; i < a.size(); i++) {
+      if (a[i] > 1) {
+        if (a[i] > 2) {
+          std::cout << "YES" << std::endl;
+          return;
+        }
+        count++;
+      }
+    }
+
+    if (count > 1) {
+      std::cout << "YES" << std::endl;
+    } else {
+      std::cout << "NO" << std::endl;
+    }
+  }
 };
 
 int main() {

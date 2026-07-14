@@ -1,3 +1,10 @@
+/*
+ * Author: Monu Carpenter
+ * Handle: m_o_n_u
+ * Time: 03:38 PM IST
+ * Problem: farmpiggie
+ */
+
 #include <bits/stdc++.h>
 
 using i64 = long long;
@@ -21,7 +28,15 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 
 class Solution {
 public:
-  void solve() {}
+  void solve() {
+    int n;
+    std::cin >> n;
+
+    std::cout << n << " ";
+    for (int i = 1; i < n; i++) {
+      std::cout << i << (i == n - 1 ? '\n' : ' ');
+    }
+  }
 };
 
 int main() {

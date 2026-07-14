@@ -1,3 +1,10 @@
+/*
+ * Author: Monu Carpenter
+ * Handle: m_o_n_u
+ * Time: 06:55 PM IST
+ * Problem: cf_bigrams
+ */
+
 #include <bits/stdc++.h>
 
 using i64 = long long;
@@ -21,7 +28,33 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 
 class Solution {
 public:
-  void solve() {}
+  void solve() {
+    int n;
+    std::cin >> n;
+
+    std::vector<int> store(n);
+
+    for (int i = 0; i < n; i++) {
+      std::cin >> store[i];
+    }
+
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+      if (store[i] >= 3) {
+        std::cout << "YES\n";
+        return;
+      }
+      if (store[i] >= 2) {
+        count++;
+      }
+    }
+
+    if (count >= 2) {
+      std::cout << "YES\n";
+    } else {
+      std::cout << "NO\n";
+    }
+  }
 };
 
 int main() {

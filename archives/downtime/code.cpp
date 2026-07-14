@@ -1,3 +1,10 @@
+/*
+ * Author: Monu Carpenter
+ * Handle: m_o_n_u
+ * Time: 01:35 PM IST
+ * Problem: downtime
+ */
+
 #include <bits/stdc++.h>
 
 using i64 = long long;
@@ -21,7 +28,22 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 
 class Solution {
 public:
-  void solve() {}
+  int get_down_time() {
+    int n, k;
+    std::cin >> n >> k;
+
+    int total_time = 0;
+
+    while (n--) {
+      int temp;
+      std::cin >> temp;
+
+      total_time += temp;
+    }
+
+    return (total_time / k) / 1000;
+  }
+  void solve() { std::cout << get_down_time() << std::endl; }
 };
 
 int main() {
@@ -29,13 +51,8 @@ int main() {
   std::ios::sync_with_stdio(false);
   std::cin.tie(nullptr);
 
-  int t;
-  std::cin >> t;
-
   Solution sol;
-  while (t--) {
-    sol.solve();
-  }
+  sol.solve();
 
   return 0;
 }
