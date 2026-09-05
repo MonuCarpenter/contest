@@ -1,8 +1,8 @@
 /*
  * Author: Monu Carpenter
  * Handle: m_o_n_u
- * Time: 04:40 PM IST
- * Problem: array
+ * Time: 09:34 AM IST
+ * Problem: A
  */
 
 #include <bits/stdc++.h>
@@ -28,28 +28,7 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 
 class Solution {
 public:
-  void solve() {
-    int n;
-    std::cin >> n;
-
-    if (n == 1) {
-      std::cout << "1\n";
-      return;
-    }
-
-    if (n == 2) {
-      std::cout << "-1\n";
-      return;
-    }
-
-    std::cout << 1 << " " << 2 < " " << 3 << " ";
-    int current_sum = 6;
-    for (int i = 3; i < 3; i++) {
-      std::cout << current_sum << " ";
-      current_sum *= 2;
-    }
-    std::cout << std::endl;
-  }
+  void solve() {}
 };
 
 int main() {
