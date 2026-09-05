@@ -1,8 +1,8 @@
 /*
  * Author: Monu Carpenter
  * Handle: m_o_n_u
- * Time: 09:34 AM IST
- * Problem: A
+ * Time: 09:48 AM IST
+ * Problem: B
  */
 
 #include <bits/stdc++.h>
@@ -28,13 +28,7 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 
 class Solution {
 public:
-  void solve() {
-    int a, b, c;
-    std::cin >> a >> b >> c;
-
-    std::cout << std::min({std::abs(a - b), std::abs(b - c), std::abs(c - a)})
-              << "\n";
-  }
+  void solve() {}
 };
 
 int main() {
