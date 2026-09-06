@@ -1,8 +1,8 @@
 /*
  * Author: Monu Carpenter
  * Handle: m_o_n_u
- * Time: 09:48 AM IST
- * Problem: B
+ * Time: 12:54 PM IST
+ * Problem: A
  */
 
 #include <bits/stdc++.h>
@@ -29,24 +29,20 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 class Solution {
 public:
   void solve() {
-    std::string s;
-    std::cin >> s;
+    int n;
+    std::cin >> n;
+    int k;
+    std::cin >> k;
 
-    int n = s.size();
-    int max_len = 0; 
-    
-    int skipped = 1; 
+    std::set<int> st;
 
-    for(int k=0; k<n; k++){
-      std::set<char> st; 
-      
-      for(int i=0; i<n; i++) {
-        if(i == skipped) {
-          skipped++; 
-        }
-        st.insert(s[start]); 
-      }
+    while (n--) {
+      int d;
+      std::cin >> d;
+      st.insert(d);
     }
+
+    std::cout << (st.contains(k) ? "YES" : "NO") << '\n';
   }
 };
 

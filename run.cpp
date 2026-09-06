@@ -138,7 +138,7 @@ void run_tests(const fs::path &folder) {
   // Compile the C++ program first
   bool use_online_judge = std::getenv("OJ") !=
                           nullptr; // Set OJ=1 in env to enable MONU_LOCAL_JUDGE
-  std::string compile_command = "g++-15 -std=c++20 ";
+  std::string compile_command = "g++-15 -std=c++23 -O2 -Wall -Wextra ";
   if (use_online_judge)
     compile_command += "-DMONU_LOCAL_JUDGE ";
   compile_command +=
@@ -167,10 +167,9 @@ void run_tests(const fs::path &folder) {
     result += buffer.data();
   }
   pclose(pipe);
-}
 
-// Read expected output
-std::ifstream expected_file(output_path);
+  // Read expected output
+  std::ifstream expected_file(output_path);
 std::stringstream expected_buffer;
 expected_buffer << expected_file.rdbuf();
 expected = expected_buffer.str();

@@ -118,7 +118,7 @@
     "C_Cpp.codeAnalysis.clangTidy.codeAction.formatFixes": true,
     "C_Cpp.codeAnalysis.clangTidy.headerFilter": ".*",
     "C_Cpp.errorSquiggles": "disabled",
-    "codeforcesHelper.compile.command": " g++-14 -std=c++20 -o",
-    "codeforcesHelper.template.templateFile": "/Desktop/vscode/contest/template.cpp",
+    "codeforcesHelper.compile.command": " g++-15 -std=c++23 -O2 -Wall -Wextra -o",
+    "codeforcesHelper.template.templateFile": "/Users/monu/Documents/github.com/contest/template.cpp",
     "cph.general.saveLocation": ""
 }

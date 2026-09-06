@@ -4,7 +4,7 @@
 		{
 			"type": "shell",
 			"label": "Compile timofey/code.cpp",
-			"command": "g++ -std=c++17 -O2 -Wall /Users/monu/Desktop/contest/timofey/code.cpp -o /Users/monu/Desktop/contest/timofey/code.out"
+			"command": "/opt/homebrew/bin/g++-15 -std=c++23 -O2 -Wall -Wextra /Users/monu/Documents/github.com/contest/timofey/code.cpp -o /Users/monu/Documents/github.com/contest/timofey/code.out"
 		}
 	]
 }

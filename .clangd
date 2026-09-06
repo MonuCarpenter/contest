@@ -1,2 +1,2 @@
 CompileFlags:
-  Add: [-std=c++20, -I/Users/monucarpenter/.local/share/include]
+  Add: [-std=c++23, -Wall, -Wextra, -O2, -DLOCAL_TEST, -I/Users/monu/Documents/github.com/contest]
