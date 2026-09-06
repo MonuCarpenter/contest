@@ -27,8 +27,28 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 #endif
 
 class Solution {
+  // key notes:
+  // n -> teams
+  // each pair matchup once
+  // two int as result
+  // eff = total goal - total goals by opp
+  // give effs of n-1
+  // find eff of nth
 public:
-  void solve() {}
+  void solve() {
+    int n;
+    std::cin >> n;
+    n--;
+
+    i64 sum = 0;
+    for (int i = 0; i < n; i++) {
+      int x;
+      std::cin >> x;
+      sum += x;
+    }
+
+    std::cout << -sum << "\n";
+  }
 };
 
 int main() {

@@ -1,8 +1,8 @@
 /*
  * Author: Monu Carpenter
  * Handle: m_o_n_u
- * Time: 09:48 AM IST
- * Problem: B
+ * Time: 01:53 PM IST
+ * Problem: C
  */
 
 #include <bits/stdc++.h>
@@ -29,11 +29,23 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 class Solution {
 public:
   void solve() {
-    std::string s;
-    std::cin >> s;
+    int n = 10;
+    std::vector<std::string> matrix(n);
 
-    int n = s.size();
-    int max_len = 0;
+    for (int i = 0; i < n; i++) {
+      std::cin >> matrix[i];
+    }
+
+    i64 result = 0;
+
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        if (matrix[i][j] == 'X') {
+          result += std::min({i, j, 9 - i, 9 - j}) + 1;
+        }
+      }
+    }
+    std::cout << result << "\n";
   }
 };
 

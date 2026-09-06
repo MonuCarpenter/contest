@@ -1,8 +1,8 @@
 /*
  * Author: Monu Carpenter
  * Handle: m_o_n_u
- * Time: 09:48 AM IST
- * Problem: B
+ * Time: 04:42 PM IST
+ * Problem: A
  */
 
 #include <bits/stdc++.h>
@@ -29,11 +29,21 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 class Solution {
 public:
   void solve() {
-    std::string s;
-    std::cin >> s;
+    int n, k;
+    std::cin >> n >> k;
 
-    int n = s.size();
-    int max_len = 0;
+    for (int i = n; i > 0; i--) {
+      if (i % k != 0) {
+        if (i == n) {
+          std::cout << 1 << std::endl << i << "\n";
+          return;
+        } else if ((n - i) % k != 0) {
+          std::cout << 2 << std::endl;
+          std::cout << i << " " << (n - i) << std::endl;
+          return;
+        }
+      }
+    }
   }
 };
 

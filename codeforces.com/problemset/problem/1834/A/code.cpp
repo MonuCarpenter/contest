@@ -1,8 +1,8 @@
 /*
  * Author: Monu Carpenter
  * Handle: m_o_n_u
- * Time: 09:48 AM IST
- * Problem: B
+ * Time: 03:36 PM IST
+ * Problem: A
  */
 
 #include <bits/stdc++.h>
@@ -29,14 +29,34 @@ template <> inline void cpp_dump::write_log(std::string_view output) {
 class Solution {
 public:
   void solve() {
-    std::string s;
-    std::cin >> s;
+    int n;
+    std::cin >> n;
 
-    int n = s.size();
-    int max_len = 0;
+    std::vector<int> a(n);
+    std::vector<int> freq(2);
+
+    int sum = 0;
+    while (n--) {
+      int current;
+      std::cin >> current;
+      a.push_back(current);
+      sum += current;
+      freq[current == -1 ? 0 : 1]++;
+    }
+
+    int result = 0;
+    if (sum < 0) {
+      result += (1 - sum) / 2;
+    }
+
+    if ((freq[0] - result) & 1) {
+      result++;
+    }
+
+    std::cout << result << "\n";
   }
 };
-
+    
 int main() {
   CPP_DUMP_SET_OPTION(es_style, cpp_dump::types::es_style_t::no_es);
   std::ios::sync_with_stdio(false);
