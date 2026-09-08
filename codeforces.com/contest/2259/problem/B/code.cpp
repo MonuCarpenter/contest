@@ -1,0 +1,66 @@
+/*
+ * Author: Monu Carpenter
+ * Handle: m_o_n_u
+ * Time: 08:49 PM IST
+ * Problem: B
+ */
+
+#include <bits/stdc++.h>
+
+using i64 = long long;
+using u64 = unsigned long long;
+using u32 = unsigned;
+
+#ifdef MONU_LOCAL_JUDGE
+#include "../cpp-dump/cpp-dump.hpp"
+#define log(...) cpp_dump(__VA_ARGS__)
+template <> inline void cpp_dump::write_log(std::string_view output) {
+  std::cout << output << '\n';
+}
+#else
+#define log(...)
+#define CPP_DUMP_SET_OPTION(...)
+#define CPP_DUMP_DEFINE_EXPORT_OBJECT(...)
+#define CPP_DUMP_DEFINE_EXPORT_OBJECT_GENERIC(...)
+#define CPP_DUMP_DEFINE_EXPORT_ENUM(...)
+#define CPP_DUMP_DEFINE_EXPORT_ENUM_GENERIC(...)
+#endif
+
+class Solution {
+public:
+  void solve() {
+    int n;
+    std::cin >> n;
+    long long odd = 0, mod0 = 0, mod2 = 0;
+
+    for (int i = 0; i < n; i++) {
+      long long x;
+      std::cin >> x;
+      if (x & 1LL) {
+        odd++;
+      } else if (x % 4 == 0) {
+        mod0++;
+      } else {
+        mod2++;
+      }
+    }
+
+    std::cout << std::max({odd, mod0, mod2}) << '\n';
+  }
+};
+
+int main() {
+  CPP_DUMP_SET_OPTION(es_style, cpp_dump::types::es_style_t::no_es);
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(nullptr);
+
+  int t;
+  std::cin >> t;
+
+  Solution sol;
+  while (t--) {
+    sol.solve();
+  }
+
+  return 0;
+}
