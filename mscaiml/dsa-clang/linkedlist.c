@@ -58,6 +58,20 @@ void remove_element_from_beginning(Link **head) {
   *head = new_node;
 }
 
+/**
+ * @description: remove the last element from the linkedlist;
+ * */
+void remove_last_element(Link *head) {
+  Link *cur = head;
+
+  while (cur->next->next != NULL) {
+    cur = cur->next;
+  }
+
+  free(cur->next);
+  cur->next = NULL;
+}
+
 int main() {
   printf("Implementing LinkedList (Singly)\n");
 
@@ -84,6 +98,11 @@ int main() {
 
   printf("add_element_at_end(3) \n");
   add_element_at_end(head, 3);
+
+  print_list(head);
+
+  printf("remove_last_element \n");
+  remove_last_element(head);
 
   print_list(head);
   return 0;
