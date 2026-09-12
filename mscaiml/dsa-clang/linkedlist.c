@@ -13,6 +13,9 @@ struct Node {
 
 typedef struct Node Link;
 
+/**
+ * @description: It adds an element at the end of the given linked list
+ * */
 void add_element_at_end(Link *head, int value) {
   Link *current = head;
   while (current->next != NULL) {
@@ -24,6 +27,9 @@ void add_element_at_end(Link *head, int value) {
   current->next->next = NULL;
 }
 
+/**
+ * @description: It prints the given linkedlist
+ * */
 void print_list(Link *head) {
   Link *current = head;
   while (current != NULL) {
@@ -33,10 +39,22 @@ void print_list(Link *head) {
   printf("NULL\n");
 }
 
+/***
+ * @description: It adds an element at the beginning of the linkedlist;
+ */
 void add_element_at_beginning(Link **head, int value) {
   Link *new_node = (Link *)malloc(sizeof(Link));
   new_node->val = value;
   new_node->next = *head;
+  *head = new_node;
+}
+
+/**
+ * @description: It removes the element from the beginning
+ * */
+void remove_element_from_beginning(Link **head) {
+  Link *new_node = (*head)->next;
+  free(*head);
   *head = new_node;
 }
 
@@ -49,13 +67,24 @@ int main() {
 
   print_list(head);
 
-  printf("Adding elements to the linked list...\n");
+  printf("add_element_at_end(2): \n");
   add_element_at_end(head, 2);
-  printf("Added 2\n");
+
   print_list(head);
 
+  printf("add_element_at_beginning(3) \n");
   add_element_at_beginning(&head, 3);
-  printf("Added 3\n");
+
+  print_list(head);
+
+  printf("remove_element_from_beginning: \n");
+  remove_element_from_beginning(&head);
+
+  print_list(head);
+
+  printf("add_element_at_end(3) \n");
+  add_element_at_end(head, 3);
+
   print_list(head);
   return 0;
 }
