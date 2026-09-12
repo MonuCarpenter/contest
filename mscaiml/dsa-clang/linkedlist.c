@@ -33,6 +33,13 @@ void print_list(Link *head) {
   printf("NULL\n");
 }
 
+void add_element_at_beginning(Link **head, int value) {
+  Link *new_node = (Link *)malloc(sizeof(Link));
+  new_node->val = value;
+  new_node->next = *head;
+  *head = new_node;
+}
+
 int main() {
   printf("Implementing LinkedList (Singly)\n");
 
@@ -45,6 +52,10 @@ int main() {
   printf("Adding elements to the linked list...\n");
   add_element_at_end(head, 2);
   printf("Added 2\n");
+  print_list(head);
+
+  add_element_at_beginning(&head, 3);
+  printf("Added 3\n");
   print_list(head);
   return 0;
 }
